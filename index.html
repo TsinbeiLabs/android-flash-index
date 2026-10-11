@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Android Image Index — factory &amp; GSI downloads</title>
+<meta name="description" content="Every Android factory and GSI image that flash.android.com offers, with direct download links — including Canary builds. Searchable, no sign-in.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📦</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1>Android Image Index</h1>
+      <p class="tag">Every build <a href="https://flash.android.com/" rel="noopener">flash.android.com</a>
+        offers — with direct downloads. No sign-in, no WebUSB.</p>
+    </div>
+    <div class="top-actions">
+      <span id="stats" class="stats" aria-live="polite">loading…</span>
+      <button id="theme" class="btn ghost" type="button" title="Toggle theme" aria-label="Toggle theme">◐</button>
+      <a class="btn ghost" href="https://github.com/TsinbeiLabs/android-flash-index" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side">
+    <div class="side-head">
+      <input id="devq" type="search" placeholder="Filter devices…" autocomplete="off"
+             spellcheck="false" aria-label="Filter devices">
+    </div>
+    <nav id="devlist" class="devlist" aria-label="Devices"></nav>
+    <div class="side-foot">
+      <a href="#" data-all="1" id="allbuilds">Browse every build</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div id="notice" class="notice" hidden></div>
+
+    <section id="devhead" class="devhead" hidden>
+      <h2 id="devname"></h2>
+      <p id="devmeta" class="muted"></p>
+    </section>
+
+    <section id="latest" class="cards" hidden></section>
+
+    <section class="controls">
+      <input id="q" type="search" placeholder="Search release, build id, track…  ( / )"
+             autocomplete="off" spellcheck="false" aria-label="Search builds">
+      <label class="chk"><input id="factive" type="checkbox"> active only</label>
+      <label class="chk"><input id="fcanary" type="checkbox"> canary only</label>
+      <label class="chk"><input id="fbeta" type="checkbox"> beta only</label>
+      <select id="fproduct" aria-label="Product"></select>
+      <select id="fsort" aria-label="Sort">
+        <option value="new">newest first</option>
+        <option value="old">oldest first</option>
+        <option value="size">largest first</option>
+        <option value="name">release name</option>
+      </select>
+      <span id="count" class="count muted"></span>
+    </section>
+
+    <div class="tablewrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>Release</th>
+            <th>Track</th>
+            <th>Build</th>
+            <th>Product</th>
+            <th class="num">Size</th>
+            <th class="act"></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p id="empty" class="empty muted" hidden>Nothing matches those filters.</p>
+  </main>
+</div>
+
+<footer class="foot">
+  <span id="gen"></span>
+  Data scraped from Google's public Flash Tool endpoint; images are hosted by
+  Google on <code>dl.google.com</code>. Unofficial — not affiliated with Google.
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

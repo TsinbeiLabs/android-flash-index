@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-11 06:09 UTC",
+  "generated": "2026-10-11 10:57 UTC",
   "latest": {
     "akita": {
       "latestBeta": {
@@ -12,7 +12,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3982979679
       },
       "latestCanary": {
         "product": "akita_beta",
@@ -24,7 +26,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3933143019
       }
     },
     "blazer": {
@@ -38,7 +42,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 11430439048
       },
       "latestCanary": {
         "product": "blazer_beta",
@@ -50,7 +56,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4544941149
       }
     },
     "bluejay": {
@@ -64,7 +72,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3786797607
       },
       "latestCanary": {
         "product": "bluejay_beta",
@@ -76,7 +86,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3750410935
       }
     },
     "caiman": {
@@ -90,7 +102,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4319314723
       },
       "latestCanary": {
         "product": "caiman_beta",
@@ -102,7 +116,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4269967732
       }
     },
     "cheetah": {
@@ -116,7 +132,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3940586487
       },
       "latestCanary": {
         "product": "cheetah_beta",
@@ -128,7 +146,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3918859420
       }
     },
     "comet": {
@@ -142,7 +162,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4234954395
       },
       "latestCanary": {
         "product": "comet_beta",
@@ -154,7 +176,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4297676806
       }
     },
     "cubs": {
@@ -168,7 +192,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 15505426430
       },
       "latestCanary": {
         "product": "cubs_beta",
@@ -180,7 +206,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8343344722
       }
     },
     "felix": {
@@ -194,7 +222,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4013702534
       },
       "latestCanary": {
         "product": "felix_beta",
@@ -206,7 +236,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3991886506
       }
     },
     "frankel": {
@@ -220,7 +252,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 11444348571
       },
       "latestCanary": {
         "product": "frankel_beta",
@@ -232,7 +266,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4558754652
       }
     },
     "grizzly": {
@@ -246,7 +282,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 15466936621
       },
       "latestCanary": {
         "product": "grizzly_beta",
@@ -258,7 +296,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8304018738
       }
     },
     "husky": {
@@ -272,7 +312,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4036439695
       },
       "latestCanary": {
         "product": "husky_beta",
@@ -284,7 +326,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3994531598
       }
     },
     "kodiak": {
@@ -298,7 +342,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 15468845164
       },
       "latestCanary": {
         "product": "kodiak_beta",
@@ -310,7 +356,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8305960170
       }
     },
     "komodo": {
@@ -324,7 +372,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4323715486
       },
       "latestCanary": {
         "product": "komodo_beta",
@@ -336,7 +386,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4274321958
       }
     },
     "lynx": {
@@ -350,7 +402,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3907978928
       },
       "latestCanary": {
         "product": "lynx_beta",
@@ -362,7 +416,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3886074807
       }
     },
     "mustang": {
@@ -376,7 +432,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 11434177719
       },
       "latestCanary": {
         "product": "mustang_beta",
@@ -388,7 +446,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4548618977
       }
     },
     "oriole": {
@@ -402,7 +462,9 @@
         "trackVersion": "Beta 9",
         "trackId": "cinnamonbun-qpr1-beta9",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3730012277
       }
     },
     "panther": {
@@ -416,7 +478,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3920463953
       },
       "latestCanary": {
         "product": "panther_beta",
@@ -428,7 +492,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3898780001
       }
     },
     "rango": {
@@ -442,7 +508,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 11387304268
       },
       "latestCanary": {
         "product": "rango_beta",
@@ -454,7 +522,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4513035789
       }
     },
     "raven": {
@@ -468,7 +538,9 @@
         "trackVersion": "Beta 9",
         "trackId": "cinnamonbun-qpr1-beta9",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3738837624
       }
     },
     "shiba": {
@@ -482,7 +554,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4028048895
       },
       "latestCanary": {
         "product": "shiba_beta",
@@ -494,7 +568,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3986144450
       }
     },
     "stallion": {
@@ -508,7 +584,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4483791272
       },
       "latestCanary": {
         "product": "stallion_beta",
@@ -520,7 +598,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4433967413
       }
     },
     "tangorpro": {
@@ -534,7 +614,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3865067220
       },
       "latestCanary": {
         "product": "tangorpro_beta",
@@ -546,7 +628,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3841970534
       }
     },
     "tegu": {
@@ -560,7 +644,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4228399728
       },
       "latestCanary": {
         "product": "tegu_beta",
@@ -572,7 +658,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4136732756
       }
     },
     "tokay": {
@@ -586,7 +674,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4316522927
       },
       "latestCanary": {
         "product": "tokay_beta",
@@ -598,7 +688,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4267094233
       }
     },
     "yogi": {
@@ -612,7 +704,9 @@
         "trackVersion": "Beta 7",
         "trackId": "cinnamonbun-qpr2-beta7",
         "canary": false,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 15353542643
       },
       "latestCanary": {
         "product": "yogi_beta",
@@ -624,7 +718,9 @@
         "trackVersion": "Canary 202610",
         "trackId": "canary-202610",
         "canary": true,
-        "active": true
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8191593950
       }
     }
   }

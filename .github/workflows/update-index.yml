@@ -5,9 +5,17 @@ on:
     # 06:00 UTC daily — shortly after Google's usual image publishes
     - cron: "0 6 * * *"
   workflow_dispatch:
+    inputs:
+      sizes_all:
+        description: "HEAD-probe every build, not just active ones (slow, thousands of requests)"
+        type: boolean
+        default: false
   push:
     branches: [main]
-    paths: ["scrape.py", ".github/workflows/update-index.yml"]
+    paths:
+      - scrape.py
+      - app.js
+      - .github/workflows/update-index.yml
 
 permissions:
   contents: write
@@ -19,6 +27,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -27,7 +36,12 @@ jobs:
           python-version: "3.12"
 
       - name: Scrape flash.android.com
-        run: python scrape.py --verify 5
+        run: |
+          if [ "${{ inputs.sizes_all }}" = "true" ]; then
+            python scrape.py --sizes-all
+          else
+            python scrape.py
+          fi
 
       - name: Commit if changed
         run: |

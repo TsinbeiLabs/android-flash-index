@@ -23,6 +23,7 @@ import argparse
 import concurrent.futures as cf
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -229,25 +230,123 @@ def build_id_key(b: dict):
         return 0
 
 
-def verify_urls(builds: list[dict], limit: int) -> dict[str, str]:
-    """HEAD-check the newest `limit` factory image URLs; returns url -> status."""
-    checked = {}
-    cands = sorted(builds, key=build_id_key, reverse=True)
-    n = 0
-    for b in cands:
-        u = b.get("factoryImageUrl")
-        if not u or u in checked:
-            continue
-        req = urllib.request.Request(u, method="HEAD", headers={"User-Agent": BASE_HEADERS["User-Agent"]})
+# Statuses that mean "ask again later", not "this image is gone".
+RETRYABLE_STATUS = {408, 425, 429, 500, 502, 503, 504, 509}
+
+
+def head_probe(url: str, timeout: int = 20, attempts: int = 3) -> tuple[int | None, int | None, bool]:
+    """HEAD a URL.
+
+    Returns (status, content_length, retryable). `retryable` is True when the
+    outcome is unknown because of throttling or a transport error, in which
+    case the result must NOT be cached as authoritative.
+    """
+    for i in range(attempts):
+        req = urllib.request.Request(
+            url, method="HEAD", headers={"User-Agent": BASE_HEADERS["User-Agent"]})
         try:
-            with urllib.request.urlopen(req, timeout=30) as r:
-                checked[u] = f"{r.status} {r.headers.get('Content-Length', '?')}"
-        except Exception as e:  # noqa: BLE001
-            checked[u] = f"ERR {e}"
-        n += 1
-        if n >= limit:
-            break
-    return checked
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                n = r.headers.get("Content-Length")
+                return r.status, (int(n) if n and n.isdigit() else None), False
+        except urllib.error.HTTPError as e:
+            if e.code in RETRYABLE_STATUS:
+                retry_after = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = float(retry_after) if retry_after else 0.0
+                except ValueError:
+                    wait = 0.0
+                time.sleep(min(wait or (1.5 ** i), 8) + random.uniform(0, 0.5))
+                continue
+            return e.code, None, False
+        except Exception:  # noqa: BLE001 - transport/DNS/timeout
+            time.sleep(min(1.5 ** i, 8) + random.uniform(0, 0.5))
+    return None, None, True
+
+
+def load_sizes(path: str) -> dict:
+    """Load the URL->status/size cache, dropping entries that were inconclusive."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {u: v for u, v in raw.items()
+            if isinstance(v, list) and len(v) == 2
+            and v[0] is not None and v[0] not in RETRYABLE_STATUS}
+
+
+def save_sizes(path: str, cache: dict) -> None:
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump({k: cache[k] for k in sorted(cache)}, f, separators=(",", ":"))
+        f.write("\n")
+    os.replace(tmp, path)
+
+
+def attach_sizes(builds: list[dict], cache: dict, path: str, workers: int = 4,
+                 active_only: bool = True, checkpoint: int = 25,
+                 verbose: bool = True) -> tuple[int, int]:
+    """Fill in sizeBytes/httpStatus from the cache, probing whatever is missing.
+
+    Two things matter here:
+
+    * dl.google.com throttles bursts of HEAD requests with 429s, and a throttled
+      answer is indistinguishable from a dead link unless we back off -- so
+      concurrency stays low and inconclusive results are never cached.
+    * a full backfill is thousands of requests, so the cache is checkpointed to
+      disk as we go. An interrupted run must not throw away its work.
+
+    By default only builds the Flash Tool still offers (`active`) are probed;
+    those are the ones anyone will actually download.
+    """
+    wanted = [b for b in builds if b.get("factoryImageUrl")]
+    if active_only:
+        active = [b for b in wanted if b.get("active")]
+        wanted = active or wanted
+    urls = sorted({b["factoryImageUrl"] for b in wanted})
+    todo = [u for u in urls if u not in cache]
+    if verbose:
+        scope = "active builds" if active_only else "all builds"
+        print(f">> sizes ({scope}): {len(urls)} urls, {len(todo)} to probe, "
+              f"{len(urls) - len(todo)} cached, {workers} workers")
+
+    inconclusive = 0
+    if todo:
+        done = 0
+        with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+            for u, (status, size, retryable) in zip(todo, ex.map(head_probe, todo)):
+                done += 1
+                if retryable:
+                    inconclusive += 1
+                else:
+                    cache[u] = [status, size]
+                if done % checkpoint == 0:
+                    save_sizes(path, cache)
+                if verbose and (done % 100 == 0 or done == len(todo)):
+                    print(f"   probed {done}/{len(todo)} "
+                          f"({inconclusive} inconclusive)", end="\r")
+        if verbose:
+            print()
+        save_sizes(path, cache)
+
+    for b in builds:
+        hit = cache.get(b.get("factoryImageUrl") or "")
+        if hit:
+            b["httpStatus"] = hit[0]
+            if hit[1] is not None:
+                b["sizeBytes"] = hit[1]
+    return len(todo), inconclusive
+
+
+def fmt_size(n) -> str:
+    if not n:
+        return ""
+    n = float(n)
+    for unit in ("B", "KB", "MB", "GB"):
+        if n < 1024 or unit == "GB":
+            return f"{n:.0f} {unit}" if unit == "B" else f"{n:.2f} {unit}"
+        n /= 1024
+    return f"{n:.2f} GB"
 
 
 def md_escape(s) -> str:
@@ -295,16 +394,18 @@ def write_markdown(outdir: str, devices: list[dict], builds: list[dict],
         lines = [f"# {d['displayName']}", "",
                  f"Codenames: {', '.join(f'`{c}`' for c in codes)}", "",
                  f"{len(rel_builds)} build(s). Newest first.", "",
-                 "| Build | Release | Track | Canary | Active | Product | Factory image |",
-                 "|---|---|---|---|---|---|---|"]
+                 "| Build | Release | Track | Canary | Active | Product | Size | Factory image |",
+                 "|---|---|---|---|---|---|---|---|"]
         for b in rel_builds:
             u = b.get("factoryImageUrl") or ""
-            link = f"[zip]({u})" if u else "-"
+            dead = b.get("httpStatus") not in (None, 200)
+            label = f"zip ({b['httpStatus']})" if dead else "zip"
+            link = f"[{label}]({u})" if u else "-"
             lines.append(
                 f"| {md_escape(b.get('buildId'))} | `{md_escape(b.get('releaseName'))}` "
                 f"| {md_escape(track_label(b))} "
                 f"| {'yes' if b.get('canary') else ''} | {'**yes**' if b.get('active') else ''} "
-                f"| `{md_escape(b.get('product'))}` | {link} |")
+                f"| `{md_escape(b.get('product'))}` | {fmt_size(b.get('sizeBytes'))} | {link} |")
         with open(page, "w", encoding="utf-8") as f:
             f.write("\n".join(lines) + "\n")
         newest = rel_builds[0]
@@ -316,15 +417,15 @@ def write_markdown(outdir: str, devices: list[dict], builds: list[dict],
            f"Generated {generated} from [flash.android.com](https://flash.android.com/).", "",
            f"**{len(builds)}** builds across **{len(by_product)}** products, "
            f"**{len(rows)}** devices with images.", "",
-           "## Active builds", "",
-           "| Device | Release | Track | Canary | Build | Product | Factory image |",
-           "|---|---|---|---|---|---|---|"]
+            "## Active builds", "",
+            "| Device | Release | Track | Canary | Build | Product | Size | Factory image |",
+            "|---|---|---|---|---|---|---|---|"]
     for r in rows:
         act = sorted((b for p in r["related"] for b in by_product.get(p, []) if b.get("active")),
                      key=build_id_key, reverse=True)
         link = f"[{r['name']}](devices/{r['slug']}.md)"
         if not act:
-            idx.append(f"| {link} | _none_ | | | | | |")
+            idx.append(f"| {link} | _none_ | | | | | | |")
             continue
         for b in act:
             u = b.get("factoryImageUrl") or ""
@@ -332,7 +433,7 @@ def write_markdown(outdir: str, devices: list[dict], builds: list[dict],
                 f"| {link} | `{md_escape(b.get('releaseName'))}` "
                 f"| {md_escape(track_label(b))} "
                 f"| {'yes' if b.get('canary') else ''} | {md_escape(b.get('buildId'))} "
-                f"| `{md_escape(b.get('product'))}` "
+                f"| `{md_escape(b.get('product'))}` | {fmt_size(b.get('sizeBytes'))} "
                 f"| {'[zip](' + u + ')' if u else '-'} |")
 
     idx += ["", "## All devices", "",
@@ -342,11 +443,15 @@ def write_markdown(outdir: str, devices: list[dict], builds: list[dict],
                    f"| `{md_escape(r['newest'].get('releaseName'))}` "
                    f"({md_escape(r['newest'].get('buildId'))}) |")
     idx += ["", "---", "",
+            "Browse with filters and one-click downloads on the "
+            "[web index](https://tsinbeilabs.github.io/android-flash-index/).", "",
             "Raw data: [`data/builds.json`](data/builds.json), "
-            "[`data/devices.json`](data/devices.json).", "",
+            "[`data/devices.json`](data/devices.json), "
+            "[`data/latest.json`](data/latest.json).", "",
             "Regenerate with `python scrape.py`."]
-    with open(os.path.join(outdir, "index.md"), "w", encoding="utf-8") as f:
+    with open(os.path.join(outdir, "LISTING.md"), "w", encoding="utf-8") as f:
         f.write("\n".join(idx) + "\n")
+
 
 
 def write_json(path: str, payload: dict, generated: str) -> str:
@@ -378,8 +483,16 @@ def main() -> int:
     ap.add_argument("--out", default=".", help="output directory (default: cwd)")
     ap.add_argument("--batch", type=int, default=40, help="products per request")
     ap.add_argument("--workers", type=int, default=6, help="parallel requests")
-    ap.add_argument("--verify", type=int, default=0,
-                    help="HEAD-check the N newest factory image URLs")
+    ap.add_argument("--no-sizes", action="store_true",
+                    help="skip HEAD-probing image sizes (data/sizes.json is a "
+                         "committed cache, so this is cheap after the first run)")
+    ap.add_argument("--sizes-all", action="store_true",
+                    help="probe every build, not just the active ones "
+                         "(thousands of requests; the cache is checkpointed so "
+                         "it is safe to interrupt and resume)")
+    ap.add_argument("--size-workers", type=int, default=4,
+                    help="parallel HEAD requests when probing sizes "
+                         "(keep low: dl.google.com answers bursts with 429)")
     ap.add_argument("--json", default=None, help="path to a local JS bundle "
                                                  "(skip downloading flash.android.com)")
     args = ap.parse_args()
@@ -407,6 +520,16 @@ def main() -> int:
     datadir = os.path.join(args.out, "data")
     os.makedirs(datadir, exist_ok=True)
 
+    sizes_path = os.path.join(datadir, "sizes.json")
+    if not args.no_sizes:
+        sizes = load_sizes(sizes_path)
+        _, inconclusive = attach_sizes(builds, sizes, sizes_path, args.size_workers,
+                                       active_only=not args.sizes_all)
+        builds.sort(key=lambda b: (b["product"], -build_id_key(b)))
+        if inconclusive:
+            print(f"   ! {inconclusive} urls inconclusive (throttled); "
+                  f"they will be retried on the next run")
+
     generated = write_json(os.path.join(datadir, "builds.json"), {
         "generated": generated, "source": HOME, "api": API_BASE,
         "counts": {"builds": len(builds),
@@ -424,11 +547,6 @@ def main() -> int:
 
     print(">> writing markdown")
     write_markdown(args.out, devices, builds, owner, generated)
-
-    if args.verify:
-        print(f">> verifying {args.verify} newest URLs")
-        for u, st in verify_urls(builds, args.verify).items():
-            print(f"   {st:>18}  {u}")
 
     # flat convenience file: codename -> newest active build, split beta/canary
     latest: dict[str, dict] = {}
