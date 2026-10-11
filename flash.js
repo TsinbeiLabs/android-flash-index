@@ -13,6 +13,7 @@ import {
 
 import {
   openImageZip, extractEntry, entryLabel, ZipError, MAX_EXTRACT_BYTES,
+  httpBlob, proxify,
 } from "./unzip.js";
 
 /* zip.js resolves the second inflate entry with importScripts() relative to the
@@ -29,9 +30,15 @@ const state = {
   busy: false,
   unlocked: null,
   vars: {},
-  archive: null,      // { view, entries, fileName, nested, innerName }
+  archive: null,      // { view, entries, fileName, nested, innerName, remote?, url? }
   extracted: null,    // { partition, blob, name } pending flash
+  proxy: "",          // optional reverse-proxy base for dl.google.com
+  netBytes: 0,        // bytes pulled by range requests for the current archive
+  netReqs: 0,
+  remoteSize: null,   // total size of the remote archive, once known
 };
+
+const PROXY_KEY = "aii-proxy";
 
 /* --------------------------------------------------------------- plumbing */
 
@@ -119,6 +126,7 @@ function refreshGuards() {
   }
   $("cmd").disabled = !state.connected || state.busy;
   $("readzip").disabled = !($("zipin").files && $("zipin").files.length) || state.busy;
+  $("readurl").disabled = !$("urlin").value.trim() || state.busy;
 
   const locked = state.connected && state.unlocked === "no";
   $("lockwarn").hidden = !locked;
@@ -406,37 +414,116 @@ async function readArchive() {
   const file = $("zipin").files[0];
   if (!file) { toast("choose a factory zip first"); return; }
 
-  $("readzip").disabled = true;
-  $("zipstatus").textContent = `reading ${file.name} (${fmtBytes(file.size)})…`;
-  $("ziplist").hidden = true;
-  log(`--- reading archive ${file.name} ---`);
+  await openArchive(
+    `local file ${file.name}`,
+    () => openImageZip(file),
+    { fileName: file.name, sizeBytes: file.size },
+  );
+}
+
+/**
+ * Open a factory zip directly from a URL over range requests.
+ *
+ * With a proxy this avoids the multi-gigabyte download entirely: the reader
+ * touches the two central directories and the one entry it needs, which is a
+ * few MiB.
+ */
+async function readUrl() {
+  const url = $("urlin").value.trim();
+  if (!url) { toast("paste a factory image URL first"); return; }
+  let parsed;
   try {
-    const t0 = performance.now();
-    const arc = await openImageZip(file);
-    state.archive = { ...arc, fileName: file.name };
+    parsed = new URL(url);
+  } catch {
+    $("zipstatus").textContent = "that is not a valid URL";
+    return;
+  }
+  if (!/^https:$/.test(parsed.protocol)) {
+    $("zipstatus").textContent = "only https: URLs are supported";
+    return;
+  }
+
+  const proxy = state.proxy;
+  const isGoogle = /(^|\.)dl\.google\.com$/i.test(parsed.hostname);
+  if (isGoogle && !proxy) {
+    const msg = "dl.google.com only allows flash.android.com to read it "
+      + "cross-origin, so this needs a reverse proxy. Set one below, or "
+      + "download the file and use the local picker.";
+    $("zipstatus").textContent = msg;
+    $("proxybox").open = true;
+    $("proxyhint").textContent = msg;
+    log(msg, "warn");
+    toast("a reverse proxy is required");
+    return;
+  }
+
+  const label = parsed.pathname.split("/").pop() || url;
+  await openArchive(
+    `remote ${label}`,
+    async () => {
+      const blob = await httpBlob(url, {
+        rewrite: (u) => proxify(u, proxy),
+        onBytes: (n) => { state.netBytes += n; state.netReqs += 1; },
+      });
+      state.remoteSize = blob.size;
+      return openImageZip(blob);
+    },
+    { fileName: label, remote: true, url },
+  );
+}
+
+/** Shared tail for both entry points: open, then present. */
+async function openArchive(what, open, meta) {
+  $("readzip").disabled = true;
+  $("readurl").disabled = true;
+  state.netBytes = 0;
+  state.netReqs = 0;
+  state.remoteSize = null;
+  $("ziplist").hidden = true;
+  $("readcost").hidden = true;
+  $("zipstatus").textContent = `reading ${what}…`;
+  setProgress(null, `reading ${what}`);
+  log(`--- reading archive ${what} ---`);
+
+  const t0 = performance.now();
+  try {
+    const arc = await open();
+    state.archive = { ...arc, ...meta };
     state.extracted = null;
 
     const ms = Math.round(performance.now() - t0);
     const where = arc.nested
       ? `${arc.entries.length} partitions inside ${arc.innerName.split("/").pop()}`
       : `${arc.entries.length} entries`;
-    $("zipstatus").textContent = `${where} — directory read in ${ms} ms.`;
+    $("zipstatus").textContent = `${where} — read in ${ms} ms.`;
+
+    if (meta.remote) {
+      const pct = state.remoteSize ? (state.netBytes / state.remoteSize * 100) : 0;
+      $("readcost").hidden = false;
+      $("readcost").innerHTML =
+        `Read the directory with <strong>${state.netReqs}</strong> range `
+        + `requests totalling <strong>${fmtBytes(state.netBytes)}</strong>`
+        + (state.remoteSize
+          ? ` — ${pct.toFixed(3)}% of the ${fmtBytes(state.remoteSize)} archive.`
+          : ".");
+    }
+
     $("zipnote").hidden = false;
-    $("zipnote").innerHTML =
-      arc.nested
-        ? `The outer zip stores its <code>image-*.zip</code> uncompressed, so it was `
-          + `opened in place — the ${fmtBytes(file.size)} archive was never unpacked.`
-        : `This looks like an inner <code>image-*.zip</code> already, or a plain image zip.`;
+    $("zipnote").innerHTML = arc.nested
+      ? `The outer zip stores its <code>image-*.zip</code> uncompressed, so it was `
+        + `opened in place${meta.remote ? " over HTTP" : ""} — the archive was never unpacked.`
+      : `This looks like an inner <code>image-*.zip</code> already, or a plain image zip.`;
     log(`archive opened: ${where}${arc.nested ? " (nested)" : ""}`, "ok");
     renderEntries();
+    setProgress(1, "archive ready");
   } catch (e) {
     state.archive = null;
     const msg = e instanceof ZipError ? e.message : (e.message || String(e));
     $("zipstatus").textContent = `failed: ${msg}`;
     log(`archive read failed — ${msg}`, "err");
+    setProgress(0, "archive read failed");
     toast("could not read that archive");
   } finally {
-    $("readzip").disabled = false;
     refreshGuards();
   }
 }
@@ -490,11 +577,25 @@ async function extractTo(label, what) {
   if (!e || !state.archive) return null;
   setProgress(null, `extracting ${label}`);
   log(`extracting ${label} (${fmtBytes(e.usize)})`);
+  const beforeBytes = state.netBytes;
+  const beforeReqs = state.netReqs;
   try {
     const blob = await extractEntry(state.archive.view, e, (p, m) => {
       setProgress(p, m);
     });
     log(`${label} extracted, ${fmtBytes(blob.size)}, CRC verified`, "ok");
+    if (state.archive.remote) {
+      const used = state.netBytes - beforeBytes;
+      const reqs = state.netReqs - beforeReqs;
+      log(`  fetched ${fmtBytes(used)} in ${reqs} range request(s) instead of the `
+        + `${fmtBytes(state.remoteSize)} archive`);
+      $("readcost").hidden = false;
+      $("readcost").innerHTML =
+        `Total so far: <strong>${state.netReqs}</strong> range requests, `
+        + `<strong>${fmtBytes(state.netBytes)}</strong> transferred of a `
+        + `${fmtBytes(state.remoteSize)} archive `
+        + `(${(state.netBytes / state.remoteSize * 100).toFixed(3)}%).`;
+    }
     return blob;
   } catch (err) {
     fail(err, what);
@@ -651,12 +752,85 @@ function main() {
     state.extracted = null;
     $("ziplist").hidden = true;
     $("zipnote").hidden = true;
+    $("readcost").hidden = true;
     $("zipstatus").textContent = f
       ? `${f.name} — ${fmtBytes(f.size)}. Read the directory to list its partitions.`
       : "";
     refreshGuards();
   });
   $("readzip").onclick = readArchive;
+
+  // remote extraction
+  $("urlin").addEventListener("input", () => {
+    state.archive = null;
+    state.extracted = null;
+    $("ziplist").hidden = true;
+    $("zipnote").hidden = true;
+    $("readcost").hidden = true;
+    refreshGuards();
+  });
+  $("readurl").onclick = readUrl;
+
+  // reverse proxy setting, kept in this browser only
+  const renderProxy = () => {
+    $("proxy").value = state.proxy;
+    $("proxystate").textContent = state.proxy
+      ? new URL(state.proxy).host
+      : "not set";
+    $("proxystate").className = state.proxy ? "state good" : "muted";
+  };
+  try { state.proxy = localStorage.getItem(PROXY_KEY) || ""; } catch { /* ignore */ }
+  renderProxy();
+
+  $("saveproxy").onclick = () => {
+    const v = $("proxy").value.trim().replace(/\/+$/, "");
+    if (v) {
+      let u;
+      try {
+        u = new URL(v);
+      } catch {
+        $("proxyhint").textContent = "that is not a valid URL";
+        return;
+      }
+      if (u.protocol !== "https:") {
+        $("proxyhint").textContent = "must be https: — an http: proxy is blocked "
+          + "as mixed content on an https: page";
+        return;
+      }
+    }
+    state.proxy = v;
+    try {
+      if (v) localStorage.setItem(PROXY_KEY, v);
+      else localStorage.removeItem(PROXY_KEY);
+    } catch { /* private mode */ }
+    renderProxy();
+    $("proxyhint").textContent = v ? "saved." : "cleared.";
+    log(`reverse proxy ${v ? "set to " + v : "cleared"}`);
+    toast(v ? "proxy saved" : "proxy cleared");
+  };
+  $("clearproxy").onclick = () => {
+    $("proxy").value = "";
+    $("saveproxy").onclick();
+  };
+
+  // deep link: flash.html?url=<encoded image url>
+  const qs = new URLSearchParams(location.search);
+  const deepUrl = qs.get("url");
+  if (deepUrl) {
+    $("urlin").value = deepUrl;
+    refreshGuards();
+    log(`opened from a link: ${deepUrl}`);
+    if (!state.proxy && /(^|\.)dl\.google\.com$/i.test(new URL(deepUrl).hostname)) {
+      $("proxybox").open = true;
+      $("proxyhint").textContent =
+        "This link points at dl.google.com, which only flash.android.com may read "
+        + "cross-origin. Deploy the bundled worker and set it above to open it "
+        + "without downloading, or download the file and use the local picker.";
+      log("no reverse proxy configured; the URL cannot be read cross-origin yet", "warn");
+    } else {
+      readUrl();
+    }
+  }
 
   // wipe arming
   $("wipe").onchange = () => {

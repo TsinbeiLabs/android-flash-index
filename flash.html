@@ -45,13 +45,44 @@
       unpacking the whole thing. Factory zips store their inner
       <code>image-*.zip</code> uncompressed, so this reads the zip directory and
       fetches only the entry you ask for — a few MiB of I/O instead of gigabytes.
-      Nothing is uploaded; it all happens locally. CRC-32 is verified after
-      inflating.</p>
+      Nothing is uploaded anywhere and no file is written to disk unless you ask
+      it to be. CRC-32 is verified after inflating.</p>
+
+    <h3>From a local file</h3>
     <div class="extrow">
       <input id="zipin" type="file" accept=".zip,application/zip">
       <button id="readzip" class="btn" type="button" disabled>Read archive</button>
     </div>
+
+    <h3>Or straight from a URL <span class="opt">no download</span></h3>
+    <p class="hint">Reads the archive in place over HTTP range requests: about
+      <strong>3 MiB</strong> to lift an <code>init_boot.img</code> out of a
+      4 GiB image. Needs a reverse proxy, because <code>dl.google.com</code>
+      only sends <code>Access-Control-Allow-Origin</code> for
+      <code>flash.android.com</code>.</p>
+    <div class="extrow">
+      <input id="urlin" type="url" placeholder="https://dl.google.com/developers/android/CANARY/images/factory/…zip"
+             autocomplete="off" spellcheck="false" aria-label="Factory image URL">
+      <button id="readurl" class="btn" type="button" disabled>Open from URL</button>
+    </div>
+    <details id="proxybox" class="proxybox">
+      <summary>Reverse proxy <span id="proxystate" class="muted">not set</span></summary>
+      <p class="hint">Deploy the bundled Cloudflare Worker
+        (<a href="https://github.com/TsinbeiLabs/android-flash-index/tree/main/worker" rel="noopener"><code>worker/</code></a>)
+        and paste its URL here. It is stored in this browser's localStorage and
+        is only ever used to rewrite image URLs — nothing else is sent to it.
+        Without one, only the local-file path works.</p>
+      <div class="extrow">
+        <input id="proxy" type="url" placeholder="https://android-image-proxy.<you>.workers.dev"
+               autocomplete="off" spellcheck="false" aria-label="Reverse proxy base URL">
+        <button id="saveproxy" class="btn sm" type="button">Save</button>
+        <button id="clearproxy" class="btn sm ghost" type="button">Clear</button>
+      </div>
+      <p id="proxyhint" class="hint"></p>
+    </details>
+
     <p id="zipstatus" class="hint"></p>
+    <p id="readcost" class="hint costline" hidden></p>
     <div id="ziplist" class="ziplist" hidden></div>
     <p class="hint" id="zipnote" hidden></p>
   </section>

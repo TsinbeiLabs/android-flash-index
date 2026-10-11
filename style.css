@@ -101,8 +101,12 @@ a { color: var(--accent); }
   border-radius: var(--radius); overflow: hidden;
 }
 .side-head { padding: 10px; border-bottom: 1px solid var(--line); }
-.side-foot { padding: 9px 12px; border-top: 1px solid var(--line); font-size: 12.5px; }
 .devlist { overflow-y: auto; padding: 6px; flex: 1; }
+
+/* the "All devices" entry, visually identical to a device row */
+.dev.all { margin-bottom: 4px; font-weight: 600; }
+.dev.all .code { font-style: normal; opacity: .75; }
+
 
 .devgroup {
   padding: 10px 8px 4px; font-size: 10.5px; font-weight: 650;
@@ -386,3 +390,40 @@ progress::-webkit-progress-value { background: var(--accent); border-radius: 999
 .ztable td.act .btn { margin-left: 6px; }
 #zipnote { font-size: 12px; }
 #zipnote code { font: 11.5px var(--mono); }
+
+/* ---- remote extraction / proxy ---- */
+
+.opt {
+  display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 10px; font-weight: 650; text-transform: uppercase; letter-spacing: .05em;
+  vertical-align: 2px;
+}
+
+#urlin, #proxy {
+  flex: 1 1 320px; padding: 7px 11px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--bg-alt); color: var(--fg);
+  font: 12px var(--mono); min-width: 0;
+}
+#urlin:focus, #proxy:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+.proxybox {
+  margin-top: 12px; padding: 10px 13px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--bg-sunken);
+}
+.proxybox > summary {
+  cursor: pointer; font-size: 12.5px; font-weight: 600; list-style: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.proxybox > summary::-webkit-details-marker { display: none; }
+.proxybox > summary::before { content: "▸"; color: var(--fg-muted); font-size: 11px; }
+.proxybox[open] > summary::before { content: "▾"; }
+.proxybox > summary .muted, .proxybox > summary .state { margin-left: auto; font-weight: 400; }
+.proxybox .hint { margin-top: 10px; }
+.proxybox .extrow { margin-top: 8px; }
+.proxybox .extrow .btn { align-self: center; flex: none; }
+#proxyhint:empty { display: none; }
+#proxyhint { color: var(--canary); }
+
+.costline { margin-top: 8px; font-variant-numeric: tabular-nums; }
+.costline strong { color: var(--ok); font-weight: 650; }

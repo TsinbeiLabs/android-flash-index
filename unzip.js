@@ -314,3 +314,121 @@ export async function extractEntry(view, entry, onProgress) {
 export function entryLabel(name) {
   return String(name ?? "").split("/").pop();
 }
+
+/* ------------------------------------------------------- remote (range) I/O */
+
+/**
+ * A Blob-like view over a remote file, read with HTTP Range requests.
+ *
+ * This is what makes it possible to pull an 8 MiB init_boot.img out of a 4 GiB
+ * factory zip without downloading it: the reader only ever touches the central
+ * directory and the one entry it needs.
+ *
+ * Two things have to be true of the server, and both are the reason a
+ * self-hosted proxy is recommended over hitting dl.google.com directly:
+ *
+ *   1. It must answer `Range` with `206` and a correct `Content-Range`.
+ *   2. It must not content-code the body. Browsers forbid setting
+ *      `Accept-Encoding`, so a client cannot ask for identity. dl.google.com
+ *      will happily gzip a .zip when the client advertises gzip, which shifts
+ *      every offset and silently corrupts the result. Every read here therefore
+ *      asserts that the byte count came back exactly as requested, so a coded
+ *      response fails loudly instead of producing a bad image.
+ *
+ * The returned object only exposes `.size` and `.slice()`, which is all
+ * openImageZip/extractEntry use, so a File and a remote zip are interchangeable.
+ *
+ * @param {string} url
+ * @param {object} [opts]
+ * @param {function(string, number): (string|URL)} [opts.rewrite]
+ *        map a URL to the one actually fetched, e.g. to route through a proxy
+ * @param {function(number): void} [opts.onBytes] called with each read length
+ * @param {typeof fetch} [opts.fetchImpl]
+ */
+export async function httpBlob(url, opts = {}) {
+  const doFetch = opts.fetchImpl || fetch;
+  const rewrite = opts.rewrite || ((u) => u);
+  const onBytes = opts.onBytes || (() => {});
+
+  async function get(start, end) {
+    const res = await doFetch(rewrite(url), {
+      headers: { Range: `bytes=${start}-${end - 1}` },
+      cache: "no-store",
+    });
+    if (res.status !== 206 && res.status !== 200) {
+      throw new ZipError(`HTTP ${res.status} reading bytes ${start}-${end - 1} of ${url}`);
+    }
+    const buf = await res.arrayBuffer();
+    const want = end - start;
+    if (buf.byteLength !== want) {
+      throw new ZipError(
+        `range ${start}-${end - 1} returned ${buf.byteLength} bytes, expected ${want}. `
+        + "The server probably applied a content-coding (gzip/br) to the response, "
+        + "which shifts every offset. Serve it through a proxy that requests "
+        + "identity encoding upstream.");
+    }
+    onBytes(buf.byteLength);
+    return { buf, res };
+  }
+
+  // Size probe: one byte is enough, the total rides along in Content-Range.
+  const first = await get(0, 1);
+  let size = null;
+  const cr = first.res.headers.get("content-range");
+  const m = cr && cr.match(/\/(\d+)\s*$/);
+  if (m) size = Number(m[1]);
+  if (!size || !Number.isFinite(size)) {
+    const cl = first.res.headers.get("content-length");
+    if (first.res.status === 200 && cl) size = Number(cl);
+  }
+  if (!size || !Number.isFinite(size)) {
+    throw new ZipError(
+      "could not determine the remote file size; the server did not return a "
+      + "usable Content-Range. Range requests may be unsupported or blocked by CORS.");
+  }
+
+  return {
+    size,
+    remote: true,
+    url,
+    slice(start, end) {
+      const lo = Math.max(0, start);
+      const hi = Math.min(size, end === undefined ? size : end);
+      const chunk = {
+        size: Math.max(0, hi - lo),
+        async arrayBuffer() {
+          if (hi <= lo) return new ArrayBuffer(0);
+          return (await get(lo, hi)).buf;
+        },
+        stream() {
+          return new ReadableStream({
+            async start(controller) {
+              controller.enqueue(new Uint8Array(await chunk.arrayBuffer()));
+              controller.close();
+            },
+          });
+        },
+      };
+      return chunk;
+    },
+  };
+}
+
+/**
+ * Turn a dl.google.com image URL into one served by a reverse proxy.
+ *
+ * The proxy exists because dl.google.com answers `Access-Control-Allow-Origin`
+ * only for https://flash.android.com, so no other origin can read those bytes
+ * from a browser. A worker that forwards the request and adds a permissive
+ * header fixes that -- and can also force identity encoding upstream.
+ *
+ * @param {string} url   absolute image URL
+ * @param {string} base  proxy base, with or without a trailing slash
+ */
+export function proxify(url, base) {
+  if (!base) return url;
+  const b = base.trim().replace(/\/+$/, "");
+  if (!b) return url;
+  const u = new URL(url);
+  return `${b}${u.pathname}${u.search}`;
+}

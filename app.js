@@ -163,6 +163,18 @@ function renderSidebar() {
   });
 
   const out = [];
+
+  // "All devices" lives at the top of the list, styled exactly like a device
+  // entry, so there is always a one-click way back out of a filtered view.
+  // Empty data-slug means "no device selected".
+  out.push(
+    `<button class="dev all" type="button" data-slug=""`
+    + ` aria-current="${state.selected === null}"`
+    + ` title="Every build, every device">`
+    + `<span>All devices</span>`
+    + `<span class="n">${state.builds.length.toLocaleString()}</span>`
+    + `<span class="code">all</span></button>`);
+
   for (const g of names) {
     out.push(`<div class="devgroup">${esc(g)}</div>`);
     for (const d of groups.get(g)) {
@@ -175,7 +187,9 @@ function renderSidebar() {
         + `<span class="code">${esc(d.slug)}</span></button>`);
     }
   }
-  nav.innerHTML = out.join("") || `<p class="muted" style="padding:12px">No device matches.</p>`;
+  const noMatch = names.length === 0;
+  nav.innerHTML = out.join("")
+    + (noMatch ? `<p class="muted" style="padding:12px">No device matches.</p>` : "");
 }
 
 function latestOf(builds, wantCanary) {
@@ -203,6 +217,7 @@ function renderCards() {
       <div class="sub">${esc(trackLabel(b))} · build ${esc(b.buildId)} · <code>${esc(b.product)}</code></div>
       <div class="row">
         <a class="btn primary sm" href="${esc(b.factoryImageUrl)}" rel="noopener">Download</a>
+        <a class="btn sm" href="${esc(extractHref(b.factoryImageUrl))}">Extract…</a>
         <button class="btn sm" type="button" data-copy="${esc(b.factoryImageUrl)}">Copy link</button>
         <span class="sz">${fmtSize(b.sizeBytes)}</span>
       </div>
@@ -257,6 +272,10 @@ function rowHtml(b) {
   const copy = b.factoryImageUrl
     ? `<button class="btn sm" type="button" data-copy="${esc(b.factoryImageUrl)}" title="Copy link">Copy</button>`
     : "";
+  const extract = b.factoryImageUrl && !dead
+    ? `<a class="btn sm" href="${esc(extractHref(b.factoryImageUrl))}"`
+      + ` title="Open in the extractor — pull init_boot etc. without downloading the whole image">Extract</a>`
+    : "";
 
   return `<tr>
     <td><span class="rel">${esc(b.releaseName)}</span>${pills}</td>
@@ -264,8 +283,13 @@ function rowHtml(b) {
     <td class="pid">${esc(b.buildId)}</td>
     <td class="prod">${esc(b.product)}</td>
     <td class="num sz">${fmtSize(b.sizeBytes)}</td>
-    <td class="act">${dl}${copy}</td>
+    <td class="act">${dl}${extract}${copy}</td>
   </tr>`;
+}
+
+/** Deep link into the flasher with the archive URL pre-filled. */
+function extractHref(url) {
+  return `flash.html?url=${encodeURIComponent(url)}`;
 }
 
 function renderTable() {
@@ -428,14 +452,10 @@ async function main() {
   renderStats();
   $("gen").textContent = `Index generated ${state.generated}.`;
 
-  // sidebar clicks
+  // sidebar clicks; an empty data-slug is the "All devices" entry
   $("devlist").addEventListener("click", (ev) => {
     const btn = ev.target.closest(".dev");
-    if (btn) selectDevice(btn.dataset.slug);
-  });
-  $("allbuilds").addEventListener("click", (ev) => {
-    ev.preventDefault();
-    selectDevice(null);
+    if (btn) selectDevice(btn.dataset.slug || null);
   });
 
   // copy buttons (delegated: cards + table)

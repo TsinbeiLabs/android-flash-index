@@ -1,0 +1,12 @@
+name = "android-image-proxy"
+main = "proxy.worker.js"
+compatibility_date = "2026-01-01"
+
+# Leave ALLOW_ORIGIN as "*" for a personal proxy. If you publish the URL, set it
+# to your site's exact origin so other pages cannot spend your quota.
+#
+#   wrangler secret put ALLOW_ORIGIN      # e.g. https://you.github.io
+#   wrangler secret put ALLOW_REFERRER    # optional, same idea via Referer
+
+[observability]
+enabled = true

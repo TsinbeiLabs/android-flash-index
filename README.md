@@ -16,7 +16,8 @@ longer lists on the developer site.
 ```
 index.html / app.js / style.css   the index site (GitHub Pages, zero dependencies)
 flash.html / flash.js             Web Fastboot flasher UI
-unzip.js                          in-place ZIP reader for factory images
+unzip.js                          in-place ZIP reader, local File or HTTP ranges
+worker/                           optional Cloudflare Worker CORS/range proxy
 vendor/                           fastboot.js (kdrag0n, MIT) + zip.js workers
 data/builds.json                  every build, every product
 data/latest.json                  newest active build per device (beta + canary)
@@ -136,17 +137,47 @@ Requirements and limits:
 
 * Chromium only (Chrome, Edge, Opera, Brave) — Firefox and Safari have no WebUSB
 * HTTPS or `localhost`; WebUSB needs a secure context
-* **images must be local.** `dl.google.com` replies with
-  `Access-Control-Allow-Origin: https://flash.android.com` and *only* for that
-  origin — any other `Origin` gets no ACAO header at all, so a browser cannot
-  read the bytes cross-origin. That single allow-list entry is precisely what
-  lets flash.android.com stream images in-page, and precisely what stops anyone
-  else from doing it. There is no proxy worth running: these are 4–15 GB objects.
-  (Worth noting because it is *almost* possible: the inner `image-*.zip` is
-  STORED at a known offset and `init_boot.img` is ~2.6 MiB compressed, so with
-  CORS a browser could extract it from a 4 GB archive with about 3 MiB of range
-  reads. Only the same-origin rule stands in the way.)
 * the bootloader must already be unlocked; this tool will not unlock it for you
+
+### Reading images straight from the URL (optional reverse proxy)
+
+By default the extractor works on files already on disk, because
+`dl.google.com` answers `Access-Control-Allow-Origin` for exactly one origin:
+
+```
+$ curl -sSI -H 'Origin: https://flash.android.com' <image-url> | grep -i access-control
+Access-Control-Allow-Origin: https://flash.android.com
+
+$ curl -sSI -H 'Origin: https://you.github.io' <image-url> | grep -i access-control
+(nothing)
+```
+
+That single allow-list entry is what lets flash.android.com stream images
+in-page, and what stops everyone else. A browser cannot work around it —
+`Origin` is a forbidden header.
+
+Deploy the bundled Cloudflare Worker ([`worker/`](worker/)) and paste its URL
+into the page's **Reverse proxy** field, and the extractor will open an archive
+**directly from its URL** — no download at all:
+
+| | requests | transferred |
+|---|---|---|
+| open the directory of a 3.98 GiB factory zip | 6 | 133 KiB |
+| …then extract `init_boot.img` | 2 | 2.63 MiB |
+| **total vs. downloading the image** | **8** | **0.065 %** |
+
+Every build row and "latest" card in the index has an **Extract** link that
+deep-links into the flasher with the URL pre-filled
+(`flash.html?url=…`), so the whole flow is: find build → extract `init_boot` →
+patch it → flash it back.
+
+The proxy is stored in your browser's localStorage and is only used to rewrite
+image URLs. Fork the repo and run your own — see
+[`worker/README.md`](worker/README.md) for the deploy steps, the path allow-list
+that keeps it from becoming an open proxy, and the content-coding trap it has to
+handle (browsers cannot send `Accept-Encoding`, and `dl.google.com` will gzip a
+`.zip`, which shifts every offset and silently corrupts the result — so both the
+worker and the client verify that each range came back byte-exact).
 
 Protocol work is [kdrag0n/fastboot.js](https://github.com/kdrag0n/fastboot.js)
 (MIT), vendored unmodified into [`vendor/`](vendor/) — see
