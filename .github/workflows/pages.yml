@@ -1,0 +1,42 @@
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      # Stage only what the site needs, so .git/ and scrape.py are not published.
+      - name: Stage site
+        run: |
+          mkdir -p _site/data
+          cp index.html app.js style.css README.md LISTING.md _site/
+          cp -r devices _site/devices
+          cp data/builds.json data/devices.json data/latest.json _site/data/
+          du -sh _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
