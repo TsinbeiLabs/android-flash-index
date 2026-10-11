@@ -349,6 +349,29 @@ def write_markdown(outdir: str, devices: list[dict], builds: list[dict],
         f.write("\n".join(idx) + "\n")
 
 
+def write_json(path: str, payload: dict, generated: str) -> str:
+    """Write `payload`, reusing the previous timestamp when only it would change.
+
+    Scheduled runs must not create a commit per day when nothing actually moved,
+    so the timestamp is treated as derived state rather than content.
+    """
+    try:
+        with open(path, encoding="utf-8") as f:
+            old = json.load(f)
+        previous = old.pop("generated", None)
+        fresh = {k: v for k, v in payload.items() if k != "generated"}
+        if previous and old == fresh:
+            generated = previous
+    except (OSError, json.JSONDecodeError):
+        pass
+    payload = {"generated": generated, **{k: v for k, v in payload.items()
+                                          if k != "generated"}}
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    return generated
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -384,22 +407,20 @@ def main() -> int:
     datadir = os.path.join(args.out, "data")
     os.makedirs(datadir, exist_ok=True)
 
-    with open(os.path.join(datadir, "devices.json"), "w", encoding="utf-8") as f:
-        json.dump({"generated": generated, "source": HOME, "devices": devices},
-                  f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    generated = write_json(os.path.join(datadir, "builds.json"), {
+        "generated": generated, "source": HOME, "api": API_BASE,
+        "counts": {"builds": len(builds),
+                   "products": len({b["product"] for b in builds}),
+                   "active": len([b for b in builds if b.get("active")])},
+        "tracks": sorted({f"{b.get('track')} {b.get('trackVersion')}".strip()
+                          for b in builds if b.get("track")}),
+        "builds": builds,
+    }, generated)
+
+    write_json(os.path.join(datadir, "devices.json"),
+               {"generated": generated, "source": HOME, "devices": devices}, generated)
 
     products = sorted({b["product"] for b in builds})
-    tracks = sorted({f"{b.get('track')} {b.get('trackVersion')}".strip()
-                     for b in builds if b.get("track")})
-    active = [b for b in builds if b.get("active")]
-    with open(os.path.join(datadir, "builds.json"), "w", encoding="utf-8") as f:
-        json.dump({"generated": generated, "source": HOME, "api": API_BASE,
-                   "counts": {"builds": len(builds), "products": len(products),
-                              "active": len(active)},
-                   "tracks": tracks, "builds": builds},
-                  f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
     print(">> writing markdown")
     write_markdown(args.out, devices, builds, owner, generated)
@@ -419,9 +440,8 @@ def main() -> int:
         cur = latest.setdefault(code, {})
         if slot not in cur or build_id_key(b) > build_id_key(cur[slot]):
             cur[slot] = b
-    with open(os.path.join(datadir, "latest.json"), "w", encoding="utf-8") as f:
-        json.dump({"generated": generated, "latest": latest}, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+    write_json(os.path.join(datadir, "latest.json"),
+               {"generated": generated, "latest": latest}, generated)
 
     n_can = sum(1 for v in latest.values() if "latestCanary" in v)
     print(f">> done in {time.time() - t0:.1f}s: {len(builds)} builds, "
