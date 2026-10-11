@@ -14,7 +14,9 @@ longer lists on the developer site.
 * plain JSON, no auth, no HTML-table scraping
 
 ```
-index.html / app.js / style.css   the website (GitHub Pages, zero dependencies)
+index.html / app.js / style.css   the index site (GitHub Pages, zero dependencies)
+flash.html / flash.js             Web Fastboot flasher UI
+vendor/                           fastboot.js (kdrag0n, MIT) + zip.js workers
 data/builds.json                  every build, every product
 data/latest.json                  newest active build per device (beta + canary)
 data/devices.json                 device table (display name <-> codenames)
@@ -64,6 +66,50 @@ it fetches `data/*.json` at runtime, so a data refresh needs no redeploy.
 * shows image size, and flags links that did not answer `200` on the last probe
 * deep-linkable — `#caiman?active=1&q=ZP11` restores the whole view
 * dark mode (follows the OS, with a manual override), keyboard: `/` search, `Esc` clear
+
+## Web Fastboot
+
+[`flash.html`](https://tsinbeilabs.github.io/android-flash-index/flash.html)
+flashes a device straight from the browser over WebUSB — the same approach
+flash.android.com uses, but for images you already have on disk.
+
+* **connect** to a device in the bootloader and read `product`, `serialno`,
+  `current-slot`, `unlocked`, `is-userspace`, bootloader/baseband versions and
+  `max-download-size`
+* **flash a partition** from a local `.img` — raw and sparse both work, oversized
+  images are split against `max-download-size` automatically
+* **flash a factory zip** (the inner `image-*.zip` or the outer factory zip),
+  sequencing bootloader → radio → boot images → logical partitions with the
+  reboots in between, exactly as `fastboot update` does
+* **boot an image temporarily** (`fastboot boot`) — ideal for trying a patched
+  `init_boot` before committing it
+* **reboot** to system / bootloader / fastbootd / recovery
+* **raw commands** for anything not covered, e.g. `getvar:current-slot`
+* live progress bar plus a timestamped, copyable log
+
+Guards, because a wrong write here is unrecoverable:
+
+* every destructive action goes through a confirmation naming the partition,
+  file, size and device serial
+* flashing is refused while `unlocked = no`
+* `wipe` is off by default **and** requires typing `WIPE` to arm
+* logical partitions (`system`, `vendor`, `super`…) warn when you are in the
+  bootloader rather than fastbootd, and vice versa
+* per-partition notes for the ones that matter — e.g. writing stock `init_boot`
+  removes root, stock `vbmeta` re-enables verified boot
+
+Requirements and limits:
+
+* Chromium only (Chrome, Edge, Opera, Brave) — Firefox and Safari have no WebUSB
+* HTTPS or `localhost`; WebUSB needs a secure context
+* **images must be local.** `dl.google.com` sends no `Access-Control-Allow-Origin`
+  header, so a browser cannot fetch them cross-origin — download first, then
+  pick the file. There is no proxy: these are 4 GB objects.
+* the bootloader must already be unlocked; this tool will not unlock it for you
+
+Protocol work is [kdrag0n/fastboot.js](https://github.com/kdrag0n/fastboot.js)
+(MIT), vendored unmodified into [`vendor/`](vendor/) — see
+[`vendor/README.md`](vendor/README.md). This repo only supplies the UI.
 
 ## Quick start
 

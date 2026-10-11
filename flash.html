@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Fastboot — Android Image Index</title>
+<meta name="description" content="Flash Android partitions and factory images straight from the browser over WebUSB.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>⚡</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1><a class="plain" href="./">← Android Image Index</a> · Web Fastboot</h1>
+      <p class="tag">Flash partitions and factory images over WebUSB, no tools to install.</p>
+    </div>
+    <div class="top-actions">
+      <button id="debug" class="btn ghost" type="button" title="Toggle verbose protocol logging">verbose log</button>
+      <button id="theme" class="btn ghost" type="button" title="Toggle theme" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<div class="flashwrap">
+
+  <div class="warn">
+    <strong>Flashing can permanently break your device.</strong>
+    Write the wrong image to the wrong partition and it may never boot again.
+    Nothing is sent until you confirm each action, and <code>-w</code> /
+    <code>fastboot -w update</code> style wiping is off unless you explicitly
+    turn it on. You need Chromium (Chrome, Edge, Opera, Brave) — Firefox and
+    Safari have no WebUSB. Images must already be on this computer: Google's
+    <code>dl.google.com</code> sends no CORS header, so a browser cannot fetch
+    them cross-origin.
+  </div>
+
+  <div class="cols">
+
+    <!-- ---------------- device ---------------- -->
+    <section class="panel">
+      <h2>Device</h2>
+      <div class="connrow">
+        <button id="connect" class="btn primary" type="button">Connect</button>
+        <span id="connstate" class="state">not connected</span>
+      </div>
+      <p class="hint">Boot the device into the bootloader
+        (<code>adb reboot bootloader</code>, or hold
+        <span class="keys">power</span>+<span class="keys">volume down</span>),
+        then connect.</p>
+
+      <dl id="vars" class="vars">
+        <dt>product</dt><dd data-var="product">—</dd>
+        <dt>serialno</dt><dd data-var="serialno">—</dd>
+        <dt>current-slot</dt><dd data-var="current-slot">—</dd>
+        <dt>unlocked</dt><dd data-var="unlocked">—</dd>
+        <dt>secure</dt><dd data-var="secure">—</dd>
+        <dt>is-userspace</dt><dd data-var="is-userspace">—</dd>
+        <dt>version-bootloader</dt><dd data-var="version-bootloader">—</dd>
+        <dt>version-baseband</dt><dd data-var="version-baseband">—</dd>
+        <dt>max-download-size</dt><dd data-var="max-download-size">—</dd>
+      </dl>
+
+      <div id="lockwarn" class="lockwarn" hidden>
+        The bootloader reports <strong>unlocked = no</strong>. Flashing is
+        disabled until you run <code>fastboot flashing unlock</code>, which
+        wipes the device.
+      </div>
+
+      <h3>Reboot</h3>
+      <div class="btnrow">
+        <button class="btn sm" type="button" data-reboot="">system</button>
+        <button class="btn sm" type="button" data-reboot="bootloader">bootloader</button>
+        <button class="btn sm" type="button" data-reboot="fastbootd">fastbootd</button>
+        <button class="btn sm" type="button" data-reboot="recovery">recovery</button>
+      </div>
+      <p class="hint"><code>fastbootd</code> is userspace fastboot — required
+        for logical partitions (<code>system</code>, <code>vendor</code>,
+        <code>product</code>…). The bootloader handles
+        <code>boot</code>/<code>init_boot</code>/<code>vbmeta</code>.</p>
+
+      <h3>Raw command</h3>
+      <form id="cmdform" class="cmdrow">
+        <input id="cmd" type="text" placeholder="getvar:product" autocomplete="off"
+               spellcheck="false" aria-label="Raw fastboot command">
+        <button class="btn sm" type="submit">Send</button>
+      </form>
+      <p class="hint">Raw fastboot syntax, not AOSP <code>fastboot</code> CLI
+        syntax — e.g. <code>getvar:current-slot</code>, <code>erase:userdata</code>,
+        <code>flashing unlock</code>.</p>
+    </section>
+
+    <!-- ---------------- actions ---------------- -->
+    <section class="panel">
+      <h2>Flash a partition</h2>
+      <p class="hint">Equivalent to <code>fastboot flash &lt;partition&gt; &lt;file&gt;</code>.
+        Raw and sparse images both work; oversized images are split automatically.</p>
+      <label class="field">
+        <span>Partition</span>
+        <select id="part">
+          <optgroup label="boot / root">
+            <option value="init_boot">init_boot</option>
+            <option value="boot">boot</option>
+            <option value="vendor_boot">vendor_boot</option>
+            <option value="vendor_kernel_boot">vendor_kernel_boot</option>
+            <option value="dtbo">dtbo</option>
+            <option value="pvmfw">pvmfw</option>
+          </optgroup>
+          <optgroup label="verified boot">
+            <option value="vbmeta">vbmeta</option>
+            <option value="vbmeta_system">vbmeta_system</option>
+            <option value="vbmeta_vendor">vbmeta_vendor</option>
+          </optgroup>
+          <optgroup label="firmware">
+            <option value="bootloader">bootloader</option>
+            <option value="radio">radio</option>
+            <option value="modem">modem</option>
+            <option value="abl">abl</option>
+            <option value="tzsw">tzsw</option>
+          </optgroup>
+          <optgroup label="logical (needs fastbootd)">
+            <option value="system">system</option>
+            <option value="system_ext">system_ext</option>
+            <option value="product">product</option>
+            <option value="vendor">vendor</option>
+            <option value="vendor_dlkm">vendor_dlkm</option>
+            <option value="system_dlkm">system_dlkm</option>
+            <option value="super">super</option>
+          </optgroup>
+          <option value="__custom">custom…</option>
+        </select>
+      </label>
+      <input id="partcustom" type="text" placeholder="custom partition name" hidden
+             autocomplete="off" spellcheck="false" aria-label="Custom partition name">
+      <label class="field">
+        <span>Image</span>
+        <input id="imgfile" type="file" accept=".img,.bin,.zip,application/octet-stream">
+      </label>
+      <p id="imginfo" class="hint"></p>
+      <button id="doflash" class="btn primary" type="button" disabled>Flash partition</button>
+
+      <hr>
+
+      <h2>Flash a factory zip</h2>
+      <p class="hint">Equivalent to <code>fastboot update image-*.zip</code>:
+        bootloader, radio, boot images and logical partitions in the right
+        order, with reboots in between. Pick the inner
+        <code>image-&lt;build&gt;.zip</code>, or the outer factory zip — both
+        are handled.</p>
+      <label class="field">
+        <span>Factory zip</span>
+        <input id="zipfile" type="file" accept=".zip,application/zip">
+      </label>
+      <p id="zipinfo" class="hint"></p>
+      <label class="chk danger">
+        <input id="wipe" type="checkbox"> wipe userdata (<code>-w</code>)
+      </label>
+      <div id="wipecfg" hidden>
+        <p class="hint">This erases everything on the device. Type
+          <code>WIPE</code> to arm it.</p>
+        <input id="wipeconfirm" type="text" placeholder="WIPE" autocomplete="off"
+               spellcheck="false" aria-label="Type WIPE to confirm">
+      </div>
+      <button id="dozip" class="btn primary" type="button" disabled>Flash factory zip</button>
+
+      <hr>
+
+      <h2>Boot an image temporarily</h2>
+      <p class="hint">Equivalent to <code>fastboot boot boot.img</code> — boots
+        once without writing anything. Useful for testing a patched
+        <code>init_boot</code> before committing it.</p>
+      <label class="field">
+        <span>Image</span>
+        <input id="bootfile" type="file" accept=".img,.bin,application/octet-stream">
+      </label>
+      <button id="doboot" class="btn" type="button" disabled>Boot image</button>
+    </section>
+  </div>
+
+  <!-- ---------------- progress + log ---------------- -->
+  <section class="panel">
+    <div class="proghead">
+      <h2>Progress</h2>
+      <span id="proglbl" class="muted">idle</span>
+    </div>
+    <progress id="prog" value="0" max="1"></progress>
+    <div class="logwrap">
+      <pre id="log" class="log" aria-live="polite"></pre>
+    </div>
+    <div class="btnrow">
+      <button id="clearlog" class="btn sm ghost" type="button">Clear log</button>
+      <button id="copylog" class="btn sm ghost" type="button">Copy log</button>
+    </div>
+  </section>
+
+  <div id="reconnect" class="reconnect" hidden>
+    The device rebooted and came back as a new USB device. Re-select it to
+    continue. <button id="reconnectbtn" class="btn primary sm" type="button">Reconnect</button>
+  </div>
+
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module" src="flash.js"></script>
+</body>
+</html>

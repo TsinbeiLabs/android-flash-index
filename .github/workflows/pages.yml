@@ -29,8 +29,11 @@ jobs:
       - name: Stage site
         run: |
           mkdir -p _site/data
-          cp index.html app.js style.css README.md LISTING.md _site/
+          cp index.html app.js style.css flash.html flash.js README.md LISTING.md _site/
           cp -r devices _site/devices
+          mkdir -p _site/vendor
+          cp vendor/fastboot.min.mjs vendor/z-worker-pako.js vendor/pako_inflate.min.js \
+             vendor/LICENSE-fastboot.js _site/vendor/
           cp data/builds.json data/devices.json data/latest.json _site/data/
           du -sh _site
 
