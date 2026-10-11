@@ -11,6 +11,10 @@ import {
   USER_ACTION_MAP, setDebugLevel, configureZip,
 } from "./vendor/fastboot.min.mjs";
 
+import {
+  openImageZip, extractEntry, entryLabel, ZipError, MAX_EXTRACT_BYTES,
+} from "./unzip.js";
+
 /* zip.js resolves the second inflate entry with importScripts() relative to the
  * worker, not the page, so both files must sit in vendor/. */
 configureZip({
@@ -25,11 +29,18 @@ const state = {
   busy: false,
   unlocked: null,
   vars: {},
+  archive: null,      // { view, entries, fileName, nested, innerName }
+  extracted: null,    // { partition, blob, name } pending flash
 };
 
 /* --------------------------------------------------------------- plumbing */
 
 const $ = (id) => document.getElementById(id);
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
 
 function fmtBytes(n) {
   if (n === null || n === undefined) return "—";
@@ -107,6 +118,7 @@ function refreshGuards() {
     $(id).disabled = !ok || !pendingFile(id);
   }
   $("cmd").disabled = !state.connected || state.busy;
+  $("readzip").disabled = !($("zipin").files && $("zipin").files.length) || state.busy;
 
   const locked = state.connected && state.unlocked === "no";
   $("lockwarn").hidden = !locked;
@@ -117,9 +129,18 @@ function refreshGuards() {
 
 /** Which file input backs a given action button. */
 function pendingFile(actionId) {
+  if (actionId === "doflash") {
+    // an image extracted in-browser counts as a chosen file
+    if (state.extracted && state.extracted.partition === currentPartition()) return true;
+  }
   const map = { doflash: "imgfile", dozip: "zipfile", doboot: "bootfile" };
   const input = $(map[actionId]);
   return input && input.files && input.files.length > 0;
+}
+
+/** The partition currently chosen in the picker (resolving "custom…"). */
+function currentPartition() {
+  return $("part").value === "__custom" ? $("partcustom").value.trim() : $("part").value;
 }
 
 function confirmAction(title, lines) {
@@ -237,12 +258,14 @@ function onReconnect() {
 }
 
 async function flashPartition() {
-  const part = $("part").value === "__custom"
-    ? $("partcustom").value.trim()
-    : $("part").value;
-  const file = $("imgfile").files[0];
+  const part = currentPartition();
+  const fromArchive = state.extracted && state.extracted.partition === part;
+  const payload = fromArchive ? state.extracted.blob : $("imgfile").files[0];
+  const origin = fromArchive
+    ? `${state.extracted.name} (extracted from ${state.archive.fileName})`
+    : (payload ? payload.name : null);
   if (!part) { toast("enter a partition name"); return; }
-  if (!file) { toast("choose an image"); return; }
+  if (!payload) { toast("choose an image"); return; }
 
   const userspace = state.vars["is-userspace"] === "yes";
   const isLogical = LOGICAL_PARTITIONS.has(part);
@@ -258,16 +281,24 @@ async function flashPartition() {
   }
 
   if (!confirmAction(`flash "${part}"`, [
-    `File:   ${file.name}`,
-    `Size:   ${fmtBytes(file.size)}`,
+    `File:   ${origin}`,
+    `Size:   ${fmtBytes(payload.size)}`,
     `Target: ${part}`,
     "",
     ...notes,
   ])) return;
 
-  await runBusy(`flash ${part}`, () => device.flashBlob(part, file, (p) => {
+  await runBusy(`flash ${part}`, () => device.flashBlob(part, payload, (p) => {
     setProgress(p, `writing ${part} — ${Math.round(p * 100)}%`);
   }));
+  if (fromArchive) {
+    state.extracted = null;
+    // the staged image is single-use; clear the label too so the UI does not
+    // keep advertising a blob that is no longer there
+    if (!$("imgfile").files.length) $("imginfo").textContent = "";
+    log("cleared the staged image; re-extract if you want to flash it again");
+    refreshGuards();
+  }
 }
 
 async function flashZip() {
@@ -360,6 +391,162 @@ async function sendCommand(ev) {
   });
 }
 
+/* ----------------------------------------------------------------- extract */
+
+/** Does the partition <select> have an <option> for this name? */
+function hasPartitionOption(name) {
+  return [...$("part").options].some((o) => o.value === name);
+}
+
+function partitionOf(entryName) {
+  return entryLabel(entryName).replace(/\.(img|bin)$/i, "");
+}
+
+async function readArchive() {
+  const file = $("zipin").files[0];
+  if (!file) { toast("choose a factory zip first"); return; }
+
+  $("readzip").disabled = true;
+  $("zipstatus").textContent = `reading ${file.name} (${fmtBytes(file.size)})…`;
+  $("ziplist").hidden = true;
+  log(`--- reading archive ${file.name} ---`);
+  try {
+    const t0 = performance.now();
+    const arc = await openImageZip(file);
+    state.archive = { ...arc, fileName: file.name };
+    state.extracted = null;
+
+    const ms = Math.round(performance.now() - t0);
+    const where = arc.nested
+      ? `${arc.entries.length} partitions inside ${arc.innerName.split("/").pop()}`
+      : `${arc.entries.length} entries`;
+    $("zipstatus").textContent = `${where} — directory read in ${ms} ms.`;
+    $("zipnote").hidden = false;
+    $("zipnote").innerHTML =
+      arc.nested
+        ? `The outer zip stores its <code>image-*.zip</code> uncompressed, so it was `
+          + `opened in place — the ${fmtBytes(file.size)} archive was never unpacked.`
+        : `This looks like an inner <code>image-*.zip</code> already, or a plain image zip.`;
+    log(`archive opened: ${where}${arc.nested ? " (nested)" : ""}`, "ok");
+    renderEntries();
+  } catch (e) {
+    state.archive = null;
+    const msg = e instanceof ZipError ? e.message : (e.message || String(e));
+    $("zipstatus").textContent = `failed: ${msg}`;
+    log(`archive read failed — ${msg}`, "err");
+    toast("could not read that archive");
+  } finally {
+    $("readzip").disabled = false;
+    refreshGuards();
+  }
+}
+
+function renderEntries() {
+  const arc = state.archive;
+  if (!arc) return;
+  const rows = [...arc.entries].sort((a, b) => entryLabel(a.name).localeCompare(entryLabel(b.name)));
+
+  const head = `<tr><th>Partition</th><th class="num">Image size</th>`
+    + `<th class="num">In zip</th><th class="act"></th></tr>`;
+  const body = rows.map((e) => {
+    const label = entryLabel(e.name);
+    const part = partitionOf(e.name);
+    const tooBig = e.usize > MAX_EXTRACT_BYTES;
+    const star = /^(init_boot|boot|vendor_boot|dtbo|vbmeta)$/i.test(part);
+    const note = tooBig
+      ? `<span class="pill dead" title="over the ${fmtBytes(MAX_EXTRACT_BYTES)} in-browser limit">too large</span>`
+      : (star ? `<span class="pill active">common</span>` : "");
+    const actions = tooBig
+      ? `<span class="muted">use 7-Zip / unzip</span>`
+      : `<button class="btn sm" type="button" data-save="${esc(label)}">Save</button>`
+        + `<button class="btn primary sm" type="button" data-use="${esc(label)}">Flash…</button>`;
+    return `<tr${star ? ' class="star"' : ""}>`
+      + `<td class="rel">${esc(label)}${note}</td>`
+      + `<td class="num sz">${fmtBytes(e.usize)}</td>`
+      + `<td class="num sz">${fmtBytes(e.csize)}</td>`
+      + `<td class="act">${actions}</td></tr>`;
+  }).join("");
+
+  const el = $("ziplist");
+  el.innerHTML = `<table class="ztable"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  el.hidden = false;
+
+  el.onclick = async (ev) => {
+    const save = ev.target.closest("[data-save]");
+    const use = ev.target.closest("[data-use]");
+    if (save) await saveEntry(save.dataset.save);
+    else if (use) await useEntryForFlashing(use.dataset.use);
+  };
+}
+
+function findEntry(label) {
+  const arc = state.archive;
+  if (!arc) return null;
+  return arc.entries.find((e) => entryLabel(e.name) === label) || null;
+}
+
+async function extractTo(label, what) {
+  const e = findEntry(label);
+  if (!e || !state.archive) return null;
+  setProgress(null, `extracting ${label}`);
+  log(`extracting ${label} (${fmtBytes(e.usize)})`);
+  try {
+    const blob = await extractEntry(state.archive.view, e, (p, m) => {
+      setProgress(p, m);
+    });
+    log(`${label} extracted, ${fmtBytes(blob.size)}, CRC verified`, "ok");
+    return blob;
+  } catch (err) {
+    fail(err, what);
+    return null;
+  }
+}
+
+async function saveEntry(label) {
+  const blob = await extractTo(label, `extract ${label}`);
+  if (!blob) return;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = label;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  setProgress(1, `saved ${label}`);
+  toast(`${label} saved`);
+}
+
+async function useEntryForFlashing(label) {
+  const blob = await extractTo(label, `extract ${label}`);
+  if (!blob) return;
+
+  const part = partitionOf(label);
+  state.extracted = { partition: part, blob, name: label };
+
+  if (hasPartitionOption(part)) {
+    $("part").value = part;
+    $("partcustom").hidden = true;
+  } else {
+    $("part").value = "__custom";
+    $("partcustom").hidden = false;
+    $("partcustom").value = part;
+  }
+  $("part").dispatchEvent(new Event("change"));
+
+  $("imginfo").textContent =
+    `${label} — ${fmtBytes(blob.size)}, extracted from `
+    + `${state.archive.fileName} and held in memory (no file was written to disk)`;
+  setProgress(1, `${label} ready to flash`);
+  toast(`${label} loaded into the flasher`);
+  log(`${label} staged for flashing as "${part}"`, "ok");
+  refreshGuards();
+
+  const target = $("doflash");
+  target.scrollIntoView({ behavior: "smooth", block: "center" });
+  target.focus({ preventScroll: true });
+}
+
 /* ------------------------------------------------------------------- theme */
 
 function applyTheme(t) {
@@ -379,10 +566,14 @@ function initTheme() {
 function describeInput(inputId, infoId) {
   const f = $(inputId).files[0];
   const el = $(infoId);
-  if (!f) { el.textContent = ""; return; }
+  if (!f) {
+    el.textContent = "";
+    refreshGuards();     // clearing the picker must re-disable the action button
+    return;
+  }
   const bits = [`${f.name}`, fmtBytes(f.size)];
   if (inputId === "imgfile") {
-    const part = $("part").value;
+    const part = currentPartition();
     if (LOGICAL_PARTITIONS.has(part) && state.vars["is-userspace"] !== "yes") {
       bits.push("logical partition — needs fastbootd");
     }
@@ -432,14 +623,40 @@ function main() {
   $("part").onchange = () => {
     const custom = $("part").value === "__custom";
     $("partcustom").hidden = !custom;
-    if (custom) $("partcustom").focus();
+    if (custom && !$("partcustom").value) $("partcustom").focus();
     describeInput("imgfile", "imginfo");
+    refreshGuards();
   };
+  $("partcustom").addEventListener("input", () => {
+    describeInput("imgfile", "imginfo");
+    refreshGuards();
+  });
 
   // file inputs
-  $("imgfile").addEventListener("change", () => describeInput("imgfile", "imginfo"));
+  $("imgfile").addEventListener("change", () => {
+    // picking a file on disk supersedes anything staged from an archive
+    if (state.extracted) {
+      state.extracted = null;
+      log("discarded the staged in-memory image; using the chosen file instead");
+    }
+    describeInput("imgfile", "imginfo");
+  });
   $("zipfile").addEventListener("change", () => describeInput("zipfile", "zipinfo"));
   $("bootfile").addEventListener("change", () => { refreshGuards(); });
+
+  // archive extraction
+  $("zipin").addEventListener("change", () => {
+    const f = $("zipin").files[0];
+    state.archive = null;
+    state.extracted = null;
+    $("ziplist").hidden = true;
+    $("zipnote").hidden = true;
+    $("zipstatus").textContent = f
+      ? `${f.name} — ${fmtBytes(f.size)}. Read the directory to list its partitions.`
+      : "";
+    refreshGuards();
+  });
+  $("readzip").onclick = readArchive;
 
   // wipe arming
   $("wipe").onchange = () => {

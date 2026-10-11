@@ -16,6 +16,7 @@ longer lists on the developer site.
 ```
 index.html / app.js / style.css   the index site (GitHub Pages, zero dependencies)
 flash.html / flash.js             Web Fastboot flasher UI
+unzip.js                          in-place ZIP reader for factory images
 vendor/                           fastboot.js (kdrag0n, MIT) + zip.js workers
 data/builds.json                  every build, every product
 data/latest.json                  newest active build per device (beta + canary)
@@ -76,8 +77,10 @@ flash.android.com uses, but for images you already have on disk.
 * **connect** to a device in the bootloader and read `product`, `serialno`,
   `current-slot`, `unlocked`, `is-userspace`, bootloader/baseband versions and
   `max-download-size`
-* **flash a partition** from a local `.img` — raw and sparse both work, oversized
-  images are split against `max-download-size` automatically
+* **extract a single partition** out of a factory zip — see below
+* **flash a partition** from a local `.img`, or straight from an archive you just
+  opened. Raw and sparse both work; oversized images are split against
+  `max-download-size` automatically
 * **flash a factory zip** (the inner `image-*.zip` or the outer factory zip),
   sequencing bootloader → radio → boot images → logical partitions with the
   reboots in between, exactly as `fastboot update` does
@@ -86,6 +89,37 @@ flash.android.com uses, but for images you already have on disk.
 * **reboot** to system / bootloader / fastbootd / recovery
 * **raw commands** for anything not covered, e.g. `getvar:current-slot`
 * live progress bar plus a timestamped, copyable log
+
+### Pulling one image out of a 4 GB factory zip
+
+Most people who download a factory image only want `init_boot.img` (8 MiB) to
+patch with KernelSU or Magisk. Unpacking the whole thing to get it is slow and
+pointless, so the page reads the archive in place:
+
+* a factory zip **stores** its inner `image-*.zip` uncompressed (method 0), so
+  that nested archive sits at a computable offset and can be opened as if it
+  were its own file
+* from there it is ordinary random access — read the central directory, find the
+  entry, `slice()` out just those bytes, `inflate-raw` them, verify CRC-32
+* nothing is ever fully buffered, and nothing leaves the machine
+
+Extracting `init_boot.img` from a 3.98 GiB factory zip costs **2 range reads and
+2.5 MiB of I/O**. The partition table shows real vs. in-zip size, marks the
+partitions people usually want, and offers **Save** (download the `.img`) or
+**Flash…** (stage it in memory and hand it to the partition flasher — no
+intermediate file on disk).
+
+Entries above 1 GiB (`product.img` is 4.3 GiB) are refused with an explanation
+rather than taking the tab down; use 7-Zip for those.
+
+ZIP64 is implemented because Pixel 11 images are ~15 GiB — verified against a
+real 14.44 GiB `cubs_beta` archive.
+
+> Factory images are plain zips of `.img` files. They contain **no**
+> `payload.bin`, so none of the protobuf/bsdiff machinery that
+> [payload_dumper](https://github.com/rajmani7584/Payload-Dumper-Android) needs
+> for OTA payloads applies here — that format only shows up in OTA zips, which
+> this index does not list.
 
 Guards, because a wrong write here is unrecoverable:
 

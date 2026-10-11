@@ -37,6 +37,24 @@
     them cross-origin.
   </div>
 
+  <!-- ---------------- extract ---------------- -->
+  <section class="panel">
+    <h2>Extract images from a factory zip</h2>
+    <p class="hint">Pull a single partition out of a factory image without
+      unpacking the whole thing. Factory zips store their inner
+      <code>image-*.zip</code> uncompressed, so this reads the zip directory and
+      fetches only the entry you ask for — a few MiB of I/O instead of gigabytes.
+      Nothing is uploaded; it all happens locally. CRC-32 is verified after
+      inflating.</p>
+    <div class="extrow">
+      <input id="zipin" type="file" accept=".zip,application/zip">
+      <button id="readzip" class="btn" type="button" disabled>Read archive</button>
+    </div>
+    <p id="zipstatus" class="hint"></p>
+    <div id="ziplist" class="ziplist" hidden></div>
+    <p class="hint" id="zipnote" hidden></p>
+  </section>
+
   <div class="cols">
 
     <!-- ---------------- device ---------------- -->
