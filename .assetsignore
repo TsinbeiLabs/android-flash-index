@@ -1,0 +1,18 @@
+# Files that must not be published when the Worker serves the repo as static
+# assets (see worker/wrangler.toml -> [assets] directory = "..").
+# Gitignore-style patterns, matched by wrangler at upload time.
+
+.git
+.github
+.gitignore
+.assetsignore
+
+# tooling and deploy config, not part of the site
+worker
+scrape.py
+__pycache__
+_site
+*.pyc
+
+# committed scraper cache; the site never reads it (460 KB of dead weight)
+data/sizes.json

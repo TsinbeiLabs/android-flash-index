@@ -1,12 +1,25 @@
-name = "android-image-proxy"
+name = "android-flash-index"
 main = "proxy.worker.js"
 compatibility_date = "2026-01-01"
 
-# Leave ALLOW_ORIGIN as "*" for a personal proxy. If you publish the URL, set it
-# to your site's exact origin so other pages cannot spend your quota.
+# One deployment serves both halves of the project: the site as static assets,
+# and the image proxy from the Worker. Same origin, so the page needs no CORS
+# and no proxy configuration at all.
 #
-#   wrangler secret put ALLOW_ORIGIN      # e.g. https://you.github.io
-#   wrangler secret put ALLOW_REFERRER    # optional, same idea via Referer
+# Requests that match a file are served straight from assets; everything else
+# (i.e. /developers/android/... and /dl/android/...) falls through to main.
+[assets]
+directory = ".."
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+
+# Leave ALLOW_ORIGIN as "*" for a personal deployment -- same-origin requests
+# never consult it, and it only matters if you also load the page from elsewhere
+# (e.g. the GitHub Pages build pointing at this worker). If the URL will be
+# public, pin it:
+#
+#   wrangler secret put ALLOW_ORIGIN      # https://you.github.io
+#   wrangler secret put ALLOW_REFERRER    # https://you.github.io/
 
 [observability]
 enabled = true

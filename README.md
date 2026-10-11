@@ -7,6 +7,10 @@ longer lists on the developer site.
 
 **→ Browse it: <https://tsinbeilabs.github.io/android-flash-index/>**
 
+**→ Fork it:** one `wrangler deploy` from [`worker/`](worker/) publishes the
+site *and* the image proxy from a single origin, which unlocks reading images
+straight from their URL — see [Self-hosting](#self-hosting-everything).
+
 * **4000+ builds**, **80+ products**, **300+ release tracks** (Android 12 QPR3 → current Canary)
 * **47 devices** with public images, Pixel 2 → Pixel 11 Pro Fold, plus GSI/AOSP
 * file sizes and link health verified by HEAD probe
@@ -156,8 +160,7 @@ That single allow-list entry is what lets flash.android.com stream images
 in-page, and what stops everyone else. A browser cannot work around it —
 `Origin` is a forbidden header.
 
-Deploy the bundled Cloudflare Worker ([`worker/`](worker/)) and paste its URL
-into the page's **Reverse proxy** field, and the extractor will open an archive
+Deploy the bundled Cloudflare Worker and the extractor will open an archive
 **directly from its URL** — no download at all:
 
 | | requests | transferred |
@@ -171,17 +174,57 @@ deep-links into the flasher with the URL pre-filled
 (`flash.html?url=…`), so the whole flow is: find build → extract `init_boot` →
 patch it → flash it back.
 
-The proxy is stored in your browser's localStorage and is only used to rewrite
-image URLs. Fork the repo and run your own — see
-[`worker/README.md`](worker/README.md) for the deploy steps, the path allow-list
-that keeps it from becoming an open proxy, and the content-coding trap it has to
-handle (browsers cannot send `Accept-Encoding`, and `dl.google.com` will gzip a
-`.zip`, which shifts every offset and silently corrupts the result — so both the
-worker and the client verify that each range came back byte-exact).
+Two ways to run it — see [`worker/README.md`](worker/README.md):
+
+* **Fork and deploy the Worker (recommended).** `cd worker && wrangler deploy`
+  publishes the *site and the proxy from one origin*, because `wrangler.toml`
+  binds the repo as static assets. Same-origin means no CORS at all, so
+  `flash.html` probes `/__proxy-info` on load, sees `{"proxy":"self"}` and
+  configures itself — zero setup, nothing stored. This is the one-deployment
+  answer: the worker endpoint defaults to itself and can still be overridden.
+* **Keep the site on GitHub Pages, add a proxy.** Deploy the worker with the
+  `[assets]` block removed and paste its URL into the page's **Reverse proxy**
+  field. It is stored in that browser's localStorage and used only to rewrite
+  image URLs.
+
+The worker is not an open proxy: the host is hardcoded to `dl.google.com`, only
+`/developers/android/` and `/dl/android/` are served, `GET`/`HEAD` only, single
+range capped at 512 MiB. It also handles a trap that silently corrupts images —
+browsers cannot send `Accept-Encoding`, and `dl.google.com` gzips a `.zip` when
+the client advertises gzip, which shifts every offset. Both the worker and the
+client verify each range came back byte-exact and fail loudly if not.
 
 Protocol work is [kdrag0n/fastboot.js](https://github.com/kdrag0n/fastboot.js)
 (MIT), vendored unmodified into [`vendor/`](vendor/) — see
 [`vendor/README.md`](vendor/README.md). This repo only supplies the UI.
+
+## Self-hosting everything
+
+The GitHub Pages deployment can browse and download, but it cannot read an image
+from its URL — that needs a proxy, and a proxy needs a server you control.
+
+The Worker in [`worker/`](worker/) removes that split. `wrangler.toml` binds the
+repo root as static assets, so one deployment serves:
+
+```
+/                       the site            <- Workers static assets
+/__proxy-info           {"proxy":"self"}    <- Worker
+/developers/android/…   proxied image bytes <- Worker
+```
+
+```bash
+git clone https://github.com/TsinbeiLabs/android-flash-index
+cd android-flash-index/worker
+wrangler deploy
+```
+
+Open `https://<yours>.workers.dev/flash.html`, click **Extract** on any build,
+and it reads the archive in place. The page probes `/__proxy-info` on load and
+sets its own origin as the proxy, so there is nothing to configure; the field is
+still there if you want to point it somewhere else.
+
+Details, limits, `.assetsignore`, quota pinning and the proxy-only variant are
+in [`worker/README.md`](worker/README.md).
 
 ## Quick start
 

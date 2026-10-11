@@ -32,13 +32,34 @@ const state = {
   vars: {},
   archive: null,      // { view, entries, fileName, nested, innerName, remote?, url? }
   extracted: null,    // { partition, blob, name } pending flash
-  proxy: "",          // optional reverse-proxy base for dl.google.com
+  proxy: "",          // reverse-proxy base for dl.google.com ("" = none)
+  proxySource: "none",// "none" | "builtin" (same origin) | "user" (localStorage)
+  selfHosted: null,   // /__proxy-info payload when served by our own worker
   netBytes: 0,        // bytes pulled by range requests for the current archive
   netReqs: 0,
   remoteSize: null,   // total size of the remote archive, once known
 };
 
 const PROXY_KEY = "aii-proxy";
+
+/**
+ * Detect whether this page is being served by our own Worker.
+ *
+ * When it is, the proxy is this same origin -- which means no CORS at all, and
+ * a fork that just ran `wrangler deploy` works with zero configuration. Returns
+ * null when served from anywhere else (e.g. GitHub Pages), where a proxy has to
+ * be supplied by hand.
+ */
+async function detectSelfHosted() {
+  try {
+    const res = await fetch("/__proxy-info", { cache: "no-store" });
+    if (!res.ok) return null;
+    const info = await res.json();
+    return info && info.proxy === "self" && info.upstream ? info : null;
+  } catch {
+    return null;
+  }
+}
 
 /* --------------------------------------------------------------- plumbing */
 
@@ -687,7 +708,7 @@ function describeInput(inputId, infoId) {
   refreshGuards();
 }
 
-function main() {
+async function main() {
   initTheme();
   $("theme").onclick = () => {
     applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
@@ -771,15 +792,27 @@ function main() {
   });
   $("readurl").onclick = readUrl;
 
-  // reverse proxy setting, kept in this browser only
+  // reverse proxy: an explicit user setting wins, otherwise use this same origin
+  // when the page is being served by our own Worker
   const renderProxy = () => {
-    $("proxy").value = state.proxy;
-    $("proxystate").textContent = state.proxy
-      ? new URL(state.proxy).host
-      : "not set";
+    const builtin = state.proxySource === "builtin";
+    $("proxy").value = builtin ? "" : state.proxy;
+    $("proxystate").textContent = builtin
+      ? "built in — this origin"
+      : (state.proxy ? new URL(state.proxy).host : "not set");
     $("proxystate").className = state.proxy ? "state good" : "muted";
+    $("proxy").placeholder = builtin
+      ? `leave empty to use ${location.host} (set a value to override)`
+      : "https://android-image-proxy.<you>.workers.dev";
+    // Clear only means something when the user has set an override; with the
+    // built-in proxy there is nothing to clear.
+    $("clearproxy").disabled = state.proxySource !== "user";
   };
-  try { state.proxy = localStorage.getItem(PROXY_KEY) || ""; } catch { /* ignore */ }
+
+  let saved = "";
+  try { saved = localStorage.getItem(PROXY_KEY) || ""; } catch { /* ignore */ }
+  state.proxy = saved;
+  state.proxySource = saved ? "user" : "none";
   renderProxy();
 
   $("saveproxy").onclick = () => {
@@ -792,26 +825,53 @@ function main() {
         $("proxyhint").textContent = "that is not a valid URL";
         return;
       }
-      if (u.protocol !== "https:") {
+      const sameOrigin = u.origin === location.origin;
+      if (u.protocol !== "https:" && !sameOrigin) {
         $("proxyhint").textContent = "must be https: — an http: proxy is blocked "
           + "as mixed content on an https: page";
         return;
       }
+      state.proxy = sameOrigin ? location.origin : v;
+      state.proxySource = "user";
+    } else {
+      // clearing falls back to the built-in proxy when this deployment has one
+      state.proxy = state.selfHosted ? location.origin : "";
+      state.proxySource = state.selfHosted ? "builtin" : "none";
     }
-    state.proxy = v;
     try {
-      if (v) localStorage.setItem(PROXY_KEY, v);
+      if (v) localStorage.setItem(PROXY_KEY, state.proxy);
       else localStorage.removeItem(PROXY_KEY);
     } catch { /* private mode */ }
     renderProxy();
-    $("proxyhint").textContent = v ? "saved." : "cleared.";
-    log(`reverse proxy ${v ? "set to " + v : "cleared"}`);
-    toast(v ? "proxy saved" : "proxy cleared");
+    $("proxyhint").textContent = v
+      ? `saved — image URLs will be read through ${state.proxy}.`
+      : (state.selfHosted
+        ? "cleared the override; using this origin's built-in proxy."
+        : "cleared. Only local files can be opened now.");
+    log(`reverse proxy ${state.proxy ? "set to " + state.proxy : "cleared"}`
+      + ` (${state.proxySource})`);
+    toast(state.proxy ? "proxy saved" : "proxy cleared");
   };
   $("clearproxy").onclick = () => {
     $("proxy").value = "";
     $("saveproxy").onclick();
   };
+
+  // Work out whether the proxy is built in BEFORE acting on any ?url= deep link,
+  // otherwise a self-hosted page would wrongly warn that a proxy is needed.
+  state.selfHosted = await detectSelfHosted();
+  if (state.selfHosted && state.proxySource === "none") {
+    state.proxy = location.origin;
+    state.proxySource = "builtin";
+    log("served by the bundled worker — the proxy is this same origin, so "
+      + "dl.google.com images can be read directly with no CORS and no setup");
+  } else if (state.selfHosted) {
+    log(`built-in proxy available, but using your override: ${state.proxy}`);
+  } else {
+    log("not served by the bundled worker; set a reverse proxy to read images "
+      + "from a URL");
+  }
+  renderProxy();
 
   // deep link: flash.html?url=<encoded image url>
   const qs = new URLSearchParams(location.search);
@@ -824,11 +884,12 @@ function main() {
       $("proxybox").open = true;
       $("proxyhint").textContent =
         "This link points at dl.google.com, which only flash.android.com may read "
-        + "cross-origin. Deploy the bundled worker and set it above to open it "
-        + "without downloading, or download the file and use the local picker.";
+        + "cross-origin. Either deploy this repo's Worker (then the proxy is this "
+        + "same origin and nothing needs configuring), or paste an existing "
+        + "worker URL above, or download the file and use the local picker.";
       log("no reverse proxy configured; the URL cannot be read cross-origin yet", "warn");
     } else {
-      readUrl();
+      await readUrl();
     }
   }
 

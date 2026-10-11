@@ -67,11 +67,16 @@
     </div>
     <details id="proxybox" class="proxybox">
       <summary>Reverse proxy <span id="proxystate" class="muted">not set</span></summary>
-      <p class="hint">Deploy the bundled Cloudflare Worker
-        (<a href="https://github.com/TsinbeiLabs/android-flash-index/tree/main/worker" rel="noopener"><code>worker/</code></a>)
-        and paste its URL here. It is stored in this browser's localStorage and
-        is only ever used to rewrite image URLs — nothing else is sent to it.
-        Without one, only the local-file path works.</p>
+      <p class="hint">A proxy is what makes reading an image from its URL
+        possible: <code>dl.google.com</code> only sends
+        <code>Access-Control-Allow-Origin</code> for <code>flash.android.com</code>.
+        If this page is served by the bundled
+        <a href="https://github.com/TsinbeiLabs/android-flash-index/tree/main/worker" rel="noopener">Worker</a>,
+        the proxy <em>is</em> this origin and the field below shows
+        “built in” — nothing to configure. Otherwise deploy your own
+        (<code>cd worker &amp;&amp; wrangler deploy</code>) and paste its URL
+        here. The value lives in this browser's localStorage and is used only to
+        rewrite image URLs.</p>
       <div class="extrow">
         <input id="proxy" type="url" placeholder="https://android-image-proxy.<you>.workers.dev"
                autocomplete="off" spellcheck="false" aria-label="Reverse proxy base URL">
