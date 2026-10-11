@@ -1,0 +1,728 @@
+{
+  "generated": "2026-10-11 06:08 UTC",
+  "source": "https://flash.android.com/",
+  "devices": [
+    {
+      "displayName": "ADT-3 (adt3)",
+      "codenames": [
+        "deadpool",
+        "adt3",
+        "adt3_gtv",
+        "adt3_netflix"
+      ],
+      "bundleProducts": [
+        "adt3_gtv",
+        "adt3_netflix",
+        "deadpool_amati"
+      ]
+    },
+    {
+      "displayName": "Pixel 8a (akita)",
+      "codenames": [
+        "akita"
+      ],
+      "bundleProducts": [
+        "akita_16k",
+        "akita_61_fullmte",
+        "akita_sit",
+        "aosp_akita_16k",
+        "aosp_akita_61_fullmte"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 2 - LTE (eos)",
+      "codenames": [
+        "eos"
+      ],
+      "bundleProducts": []
+    },
+    {
+      "displayName": "Pixel Watch 2 - Bluetooth/Wi-Fi (aurora)",
+      "codenames": [
+        "aurora"
+      ],
+      "bundleProducts": []
+    },
+    {
+      "displayName": "Pixel 5a with 5G (barbet)",
+      "codenames": [
+        "barbet"
+      ],
+      "bundleProducts": [
+        "aosp_deepspace_pkvm_experimental",
+        "deepspace_16k",
+        "deepspace_pkvm_experimental"
+      ]
+    },
+    {
+      "displayName": "deepspace",
+      "codenames": [
+        "deepspace"
+      ],
+      "bundleProducts": [
+        "aosp_deepspace_pkvm_experimental",
+        "deepspace_16k",
+        "deepspace_pkvm_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 10 Pro (blazer)",
+      "codenames": [
+        "blazer",
+        "blazer_2",
+        "iris",
+        "iris_dev"
+      ],
+      "bundleProducts": [
+        "aosp_blazer_16k",
+        "aosp_blazer_2_16k",
+        "blazer_16k",
+        "blazer_2_16k",
+        "blazer_2_angle",
+        "blazer_2_desktop",
+        "blazer_2_hsum",
+        "blazer_angle",
+        "blazer_desktop",
+        "blazer_hsum",
+        "iris",
+        "iris_dev",
+        "mosscap"
+      ]
+    },
+    {
+      "displayName": "Pixel 10 (frankel)",
+      "codenames": [
+        "frankel"
+      ],
+      "bundleProducts": [
+        "aosp_frankel_16k",
+        "aosp_frankel_pkvm_experimental",
+        "frankel_16k",
+        "frankel_angle",
+        "frankel_angle_beta",
+        "frankel_hsum",
+        "frankel_pkvm_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 10 Pro XL (mustang)",
+      "codenames": [
+        "mustang",
+        "mustang_2"
+      ],
+      "bundleProducts": [
+        "aosp_mustang_16k",
+        "aosp_mustang_2_16k",
+        "aosp_mustang_pkvm_experimental",
+        "mustang_16k",
+        "mustang_2_16k",
+        "mustang_2_angle",
+        "mustang_2_angle_beta",
+        "mustang_2_hsum",
+        "mustang_angle",
+        "mustang_angle_beta",
+        "mustang_hsum",
+        "mustang_pkvm_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 6a (bluejay)",
+      "codenames": [
+        "bluejay"
+      ],
+      "bundleProducts": [
+        "bluejay_angle",
+        "bluejay_lily",
+        "bluejay_sit"
+      ]
+    },
+    {
+      "displayName": "Pixel 3 (blueline)",
+      "codenames": [
+        "blueline",
+        "crosshatch"
+      ],
+      "bundleProducts": [
+        "sargo_lily"
+      ]
+    },
+    {
+      "displayName": "Pixel 3 XL (crosshatch)",
+      "codenames": [
+        "crosshatch"
+      ],
+      "bundleProducts": [
+        "sargo_lily"
+      ]
+    },
+    {
+      "displayName": "Pixel 3a XL (bonito)",
+      "codenames": [
+        "bonito"
+      ],
+      "bundleProducts": [
+        "sargo_lily"
+      ]
+    },
+    {
+      "displayName": "Pixel 3a (sargo)",
+      "codenames": [
+        "sargo"
+      ],
+      "bundleProducts": [
+        "sargo_lily"
+      ]
+    },
+    {
+      "displayName": "Pixel 4a (5G) (bramble)",
+      "codenames": [
+        "bramble"
+      ],
+      "bundleProducts": [
+        "bramble_beta_64",
+        "bramble_lily"
+      ]
+    },
+    {
+      "displayName": "Pixel 9 Pro XL (komodo)",
+      "codenames": [
+        "komodo"
+      ],
+      "bundleProducts": [
+        "aosp_komodo_16k",
+        "komodo_16k",
+        "komodo_angle",
+        "komodo_sit",
+        "komodo_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel 9 Pro (caiman)",
+      "codenames": [
+        "caiman"
+      ],
+      "bundleProducts": [
+        "aosp_caiman_16k",
+        "caiman_16k",
+        "caiman_angle",
+        "caiman_angle_beta",
+        "caiman_sit",
+        "caiman_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel 9 (tokay)",
+      "codenames": [
+        "tokay"
+      ],
+      "bundleProducts": [
+        "aosp_tokay_16k",
+        "tokay_16k",
+        "tokay_angle",
+        "tokay_sit",
+        "tokay_ultrasonic"
+      ]
+    },
+    {
+      "displayName": "Pixel 7 (panther)",
+      "codenames": [
+        "panther"
+      ],
+      "bundleProducts": [
+        "panther_angle",
+        "panther_sit",
+        "panther_watch"
+      ]
+    },
+    {
+      "displayName": "Pixel 7 Pro (cheetah)",
+      "codenames": [
+        "cheetah"
+      ],
+      "bundleProducts": [
+        "aosp_cheetah_ultrasonic",
+        "cheetah_angle",
+        "cheetah_hsum",
+        "cheetah_sit",
+        "cheetah_ufs",
+        "cheetah_ultrasonic",
+        "cheetah_watch"
+      ]
+    },
+    {
+      "displayName": "Pixel 9 Pro Fold (comet)",
+      "codenames": [
+        "comet",
+        "comet23"
+      ],
+      "bundleProducts": [
+        "comet_angle",
+        "comet_angle_beta",
+        "comet_sit",
+        "comet_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel 4 (flame)",
+      "codenames": [
+        "flame"
+      ],
+      "bundleProducts": [
+        "flame_er"
+      ]
+    },
+    {
+      "displayName": "Pixel 4 XL (coral)",
+      "codenames": [
+        "coral",
+        "polygon-floral-sm8150-nonhlos"
+      ],
+      "bundleProducts": [
+        "coral_er"
+      ]
+    },
+    {
+      "displayName": "spacecraft",
+      "codenames": [
+        "spacecraft"
+      ],
+      "bundleProducts": [
+        "spacecraft_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "kodiak_2",
+      "codenames": [
+        "kodiak_2"
+      ],
+      "bundleProducts": [
+        "kodiak_2_iris_q8",
+        "kodiak_2_iris_stub",
+        "kodiak_2_iris_v130",
+        "kodiak_2_ssu_experimental",
+        "kodiak_iris_q8",
+        "kodiak_iris_stub",
+        "kodiak_iris_v130",
+        "kodiak_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 11 Pro XL",
+      "codenames": [
+        "kodiak"
+      ],
+      "bundleProducts": [
+        "kodiak_16k",
+        "kodiak_2_iris_q8",
+        "kodiak_2_iris_stub",
+        "kodiak_2_iris_v130",
+        "kodiak_2_ssu_experimental",
+        "kodiak_iris_q8",
+        "kodiak_iris_stub",
+        "kodiak_iris_v130",
+        "kodiak_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "grizzly_2",
+      "codenames": [
+        "grizzly_2"
+      ],
+      "bundleProducts": [
+        "grizzly_2_iris_q8",
+        "grizzly_2_iris_stub",
+        "grizzly_2_iris_v130",
+        "grizzly_2_ssu_experimental",
+        "grizzly_iris_q8",
+        "grizzly_iris_stub",
+        "grizzly_iris_v130",
+        "grizzly_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 11 Pro",
+      "codenames": [
+        "grizzly"
+      ],
+      "bundleProducts": [
+        "grizzly_16k",
+        "grizzly_2_iris_q8",
+        "grizzly_2_iris_stub",
+        "grizzly_2_iris_v130",
+        "grizzly_2_ssu_experimental",
+        "grizzly_iris_q8",
+        "grizzly_iris_stub",
+        "grizzly_iris_v130",
+        "grizzly_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 11",
+      "codenames": [
+        "cubs"
+      ],
+      "bundleProducts": [
+        "cubs_16k",
+        "cubs_iris_q8",
+        "cubs_iris_stub",
+        "cubs_iris_v130",
+        "cubs_ssu_experimental"
+      ]
+    },
+    {
+      "displayName": "Pixel 11 Pro Fold",
+      "codenames": [
+        "yogi"
+      ],
+      "bundleProducts": [
+        "yogi_16k",
+        "yogi_iris_q8",
+        "yogi_iris_stub",
+        "yogi_iris_v130"
+      ]
+    },
+    {
+      "displayName": "DragonBoard 845c (db845c)",
+      "codenames": [
+        "db845c",
+        "SuperEDK2k"
+      ],
+      "bundleProducts": [
+        "felix_sit"
+      ]
+    },
+    {
+      "displayName": "Pixel Fold (felix)",
+      "codenames": [
+        "felix"
+      ],
+      "bundleProducts": [
+        "felix_sit"
+      ]
+    },
+    {
+      "displayName": "Glass Enterprise Edition 2",
+      "codenames": [
+        "glass_v3",
+        "sdm710"
+      ],
+      "bundleProducts": [
+        "factory_goteria_lw6",
+        "goteria_lw6"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 5 (goteria)",
+      "codenames": [
+        "goteria",
+        "godric_lte",
+        "wisteria_lte",
+        "godric_btwifi",
+        "wisteria_btwifi"
+      ],
+      "bundleProducts": [
+        "factory_goteria_lw6",
+        "goteria_lw6"
+      ]
+    },
+    {
+      "displayName": "HiKey",
+      "codenames": [
+        "hikey"
+      ],
+      "bundleProducts": [
+        "aosp_husky_61_fullmte",
+        "aosp_husky_pgagnostic",
+        "aosp_husky_pkvm_experimental",
+        "husky_61_fullmte",
+        "husky_angle",
+        "husky_pgagnostic",
+        "husky_pkvm_experimental",
+        "husky_sit",
+        "husky_ufs"
+      ]
+    },
+    {
+      "displayName": "HiKey 960",
+      "codenames": [
+        "hikey960"
+      ],
+      "bundleProducts": [
+        "aosp_husky_61_fullmte",
+        "aosp_husky_pgagnostic",
+        "aosp_husky_pkvm_experimental",
+        "husky_61_fullmte",
+        "husky_angle",
+        "husky_pgagnostic",
+        "husky_pkvm_experimental",
+        "husky_sit",
+        "husky_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel 8 Pro (husky)",
+      "codenames": [
+        "husky"
+      ],
+      "bundleProducts": [
+        "aosp_husky_61_fullmte",
+        "aosp_husky_pgagnostic",
+        "aosp_husky_pkvm_experimental",
+        "husky_61_fullmte",
+        "husky_angle",
+        "husky_pgagnostic",
+        "husky_pkvm_experimental",
+        "husky_sit",
+        "husky_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel 8 (shiba)",
+      "codenames": [
+        "shiba"
+      ],
+      "bundleProducts": [
+        "aosp_shiba_61_fullmte",
+        "aosp_shiba_pgagnostic",
+        "aosp_shiba_pkvm_experimental",
+        "shiba_61_fullmte",
+        "shiba_angle",
+        "shiba_microfuchsia",
+        "shiba_pgagnostic",
+        "shiba_pkvm_experimental",
+        "shiba_sit"
+      ]
+    },
+    {
+      "displayName": "Pixel 7a (lynx)",
+      "codenames": [
+        "lynx"
+      ],
+      "bundleProducts": [
+        "lynx_sit"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 4 (LTE)",
+      "codenames": [
+        "menari_lte",
+        "meridian_lte",
+        "kenari_lte"
+      ],
+      "bundleProducts": [
+        "mixed_walleye"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 4 (Bluetooth/Wi-Fi)",
+      "codenames": [
+        "menari_btwifi",
+        "meridian_btwifi",
+        "kenari_btwifi"
+      ],
+      "bundleProducts": [
+        "mixed_walleye"
+      ]
+    },
+    {
+      "displayName": "Muskie",
+      "codenames": [
+        "muskie"
+      ],
+      "bundleProducts": [
+        "mixed_walleye"
+      ]
+    },
+    {
+      "displayName": "Pixel 2 (walleye)",
+      "codenames": [
+        "walleye"
+      ],
+      "bundleProducts": [
+        "mixed_walleye",
+        "walleye_go_b1",
+        "walleye_go_b2",
+        "walleyeb1",
+        "walleyeb2"
+      ]
+    },
+    {
+      "displayName": "Pixel 6 Pro (raven)",
+      "codenames": [
+        "raven"
+      ],
+      "bundleProducts": [
+        "aosp_raven_16k_64",
+        "aosp_raven_64",
+        "aosp_raven_pgagnostic_64",
+        "raven_16k_64",
+        "raven_64",
+        "raven_angle",
+        "raven_beta_64",
+        "raven_desktop",
+        "raven_pgagnostic_64",
+        "raven_sit",
+        "raven_starcam",
+        "raven_tuscany"
+      ]
+    },
+    {
+      "displayName": "Pixel 6 (oriole)",
+      "codenames": [
+        "oriole"
+      ],
+      "bundleProducts": [
+        "aosp_oriole_16k_64",
+        "aosp_oriole_64",
+        "aosp_oriole_pgagnostic_64",
+        "oriole_16k_64",
+        "oriole_64",
+        "oriole_angle",
+        "oriole_beta_64",
+        "oriole_lily",
+        "oriole_pgagnostic_64",
+        "oriole_sit",
+        "oriole_ufs"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch - LTE (r11)",
+      "codenames": [
+        "r11"
+      ],
+      "bundleProducts": [
+        "r11_bona",
+        "r11_btwifi_static",
+        "r11_eleven",
+        "r11_ios",
+        "r11_lowmem",
+        "r11_lte1g",
+        "r11_open"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch - Bluetooth/Wi-Fi (r11btwifi)",
+      "codenames": [
+        "r11btwifi"
+      ],
+      "bundleProducts": [
+        "r11btwifi_bona",
+        "r11btwifi_ios",
+        "r11btwifi_lowmem",
+        "r11btwifi_open"
+      ]
+    },
+    {
+      "displayName": "Pixel 10 Pro Fold (rango)",
+      "codenames": [
+        "rango"
+      ],
+      "bundleProducts": [
+        "rango_16k",
+        "rango_angle",
+        "rango_desktop",
+        "rango_hsum"
+      ]
+    },
+    {
+      "displayName": "Pixel 5 (redfin)",
+      "codenames": [
+        "redfin"
+      ],
+      "bundleProducts": [
+        "redfin_beta_64"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 3 - LTE (seluna)",
+      "codenames": [
+        "seluna",
+        "selene",
+        "luna"
+      ],
+      "bundleProducts": [
+        "aosp_stallion_16k",
+        "stallion_16k"
+      ]
+    },
+    {
+      "displayName": "Pixel Watch 3 - Bluetooth/Wi-Fi (solios)",
+      "codenames": [
+        "solios",
+        "helios",
+        "sol"
+      ],
+      "bundleProducts": [
+        "aosp_stallion_16k",
+        "stallion_16k"
+      ]
+    },
+    {
+      "displayName": "Pixel 10a (stallion)",
+      "codenames": [
+        "stallion"
+      ],
+      "bundleProducts": [
+        "aosp_stallion_16k",
+        "stallion_16k"
+      ]
+    },
+    {
+      "displayName": "Pixel 4a (sunfish)",
+      "codenames": [
+        "sunfish"
+      ],
+      "bundleProducts": [
+        "sunfish_lily",
+        "sunfish_tuscany"
+      ]
+    },
+    {
+      "displayName": "Pixel 2 XL (taimen)",
+      "codenames": [
+        "taimen"
+      ],
+      "bundleProducts": [
+        "taimen_go_b1",
+        "taimen_go_b2",
+        "taimen_go_type1",
+        "taimen_go_type2",
+        "taimen_go_type3a",
+        "taimen_go_type3b",
+        "taimen_go_type4a",
+        "taimen_go_type4b",
+        "taimen_go_type4c",
+        "taimenb1",
+        "taimenb2"
+      ]
+    },
+    {
+      "displayName": "Pixel Tablet (tangorpro)",
+      "codenames": [
+        "tangorpro"
+      ],
+      "bundleProducts": [
+        "tangorpro_car_cw",
+        "tangorpro_car_ext",
+        "tangorpro_car_sa_assistant",
+        "tangorpro_car_sa_maps",
+        "tangorpro_car_sa_playstore",
+        "tangorpro_desktop",
+        "tangorpro_hsum",
+        "tangorpro_ui_portrait_car_ext"
+      ]
+    },
+    {
+      "displayName": "Pixel 9a (tegu)",
+      "codenames": [
+        "tegu"
+      ],
+      "bundleProducts": [
+        "aosp_tegu_16k",
+        "tegu_16k",
+        "tegu_angle",
+        "tegu_hsum"
+      ]
+    }
+  ]
+}

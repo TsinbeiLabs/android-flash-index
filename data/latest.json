@@ -1,0 +1,631 @@
+{
+  "generated": "2026-10-11 06:08 UTC",
+  "latest": {
+    "akita": {
+      "latestBeta": {
+        "product": "akita_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "akita_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp41.260831.016-factory-80792ca7.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "akita_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "akita_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.260918.007-factory-30937b4b.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "blazer": {
+      "latestBeta": {
+        "product": "blazer_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "blazer_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260831.016-factory-96b40732.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "blazer_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "blazer_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.260918.007-factory-f8da6c77.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "bluejay": {
+      "latestBeta": {
+        "product": "bluejay_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "bluejay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260831.016-factory-3b079cfd.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "bluejay_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "bluejay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260918.007-factory-a6494b9b.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "caiman": {
+      "latestBeta": {
+        "product": "caiman_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "caiman_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/caiman_beta-cp41.260831.016-factory-230132a8.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "caiman_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "caiman_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/caiman_beta-zp11.260918.007-factory-b96cfe1f.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "cheetah": {
+      "latestBeta": {
+        "product": "cheetah_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "cheetah_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-cp41.260831.016-factory-e1f592c1.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "cheetah_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "cheetah_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cheetah_beta-zp11.260918.007-factory-6dcae64c.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "comet": {
+      "latestBeta": {
+        "product": "comet_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "comet_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-cp41.260831.016-factory-9f0c5c05.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "comet_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "comet_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/comet_beta-zp11.260918.007-factory-8586f319.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "cubs": {
+      "latestBeta": {
+        "product": "cubs_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "cubs_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.016-factory-11122495.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "cubs_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "cubs_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "felix": {
+      "latestBeta": {
+        "product": "felix_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "felix_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp41.260831.016-factory-d1373b3f.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "felix_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "felix_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.260918.007-factory-c20fa867.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "frankel": {
+      "latestBeta": {
+        "product": "frankel_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "frankel_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp41.260831.016-factory-70575213.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "frankel_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "frankel_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.260918.007-factory-de5cf752.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "grizzly": {
+      "latestBeta": {
+        "product": "grizzly_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "grizzly_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.016-factory-cad23c5e.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "grizzly_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "grizzly_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.260918.007-factory-d4f217d1.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "husky": {
+      "latestBeta": {
+        "product": "husky_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "husky_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-cp41.260831.016-factory-1ad56cdc.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "husky_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "husky_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260918.007-factory-00316935.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "kodiak": {
+      "latestBeta": {
+        "product": "kodiak_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "kodiak_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.016-factory-b503ab0c.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "kodiak_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "kodiak_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "komodo": {
+      "latestBeta": {
+        "product": "komodo_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "komodo_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-cp41.260831.016-factory-432779aa.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "komodo_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "komodo_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260918.007-factory-4ee71c79.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "lynx": {
+      "latestBeta": {
+        "product": "lynx_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "lynx_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.016-factory-e645353a.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "lynx_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "lynx_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.260918.007-factory-12d95198.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "mustang": {
+      "latestBeta": {
+        "product": "mustang_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "mustang_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-cp41.260831.016-factory-a879d81f.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "mustang_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "mustang_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.260918.007-factory-d94091f0.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "oriole": {
+      "latestBeta": {
+        "product": "oriole_beta",
+        "buildId": "16064790",
+        "releaseName": "CP31.260623.012",
+        "target": "oriole_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/oriole_beta-cp31.260623.012-factory-d3240665.zip",
+        "track": "Android 17 QPR1",
+        "trackVersion": "Beta 9",
+        "trackId": "cinnamonbun-qpr1-beta9",
+        "canary": false,
+        "active": true
+      }
+    },
+    "panther": {
+      "latestBeta": {
+        "product": "panther_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "panther_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-cp41.260831.016-factory-3b04ae1a.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "panther_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "panther_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/panther_beta-zp11.260918.007-factory-592e7f04.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "rango": {
+      "latestBeta": {
+        "product": "rango_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "rango_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-cp41.260831.016-factory-162078dc.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "rango_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "rango_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260918.007-factory-747006d7.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "raven": {
+      "latestBeta": {
+        "product": "raven_beta",
+        "buildId": "16064790",
+        "releaseName": "CP31.260623.012",
+        "target": "raven_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/raven_beta-cp31.260623.012-factory-61b11097.zip",
+        "track": "Android 17 QPR1",
+        "trackVersion": "Beta 9",
+        "trackId": "cinnamonbun-qpr1-beta9",
+        "canary": false,
+        "active": true
+      }
+    },
+    "shiba": {
+      "latestBeta": {
+        "product": "shiba_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "shiba_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-cp41.260831.016-factory-b9089236.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "shiba_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "shiba_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/shiba_beta-zp11.260918.007-factory-4234c29f.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "stallion": {
+      "latestBeta": {
+        "product": "stallion_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "stallion_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260831.016-factory-aea4e868.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "stallion_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "stallion_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260918.007-factory-8fa571db.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "tangorpro": {
+      "latestBeta": {
+        "product": "tangorpro_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "tangorpro_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260831.016-factory-461860cd.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "tangorpro_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "tangorpro_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260918.007-factory-fbfe0cb4.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "tegu": {
+      "latestBeta": {
+        "product": "tegu_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "tegu_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tegu_beta-cp41.260831.016-factory-7aa199a4.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "tegu_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "tegu_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260918.007-factory-f5955275.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "tokay": {
+      "latestBeta": {
+        "product": "tokay_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "tokay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260831.016-factory-9e28f96d.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "tokay_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "tokay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.260918.007-factory-7a28177f.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    },
+    "yogi": {
+      "latestBeta": {
+        "product": "yogi_beta",
+        "buildId": "16521119",
+        "releaseName": "CP41.260831.016",
+        "target": "yogi_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.016-factory-facc761d.zip",
+        "track": "Android 17 QPR2",
+        "trackVersion": "Beta 7",
+        "trackId": "cinnamonbun-qpr2-beta7",
+        "canary": false,
+        "active": true
+      },
+      "latestCanary": {
+        "product": "yogi_beta",
+        "buildId": "16484274",
+        "releaseName": "ZP11.260918.007",
+        "target": "yogi_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.260918.007-factory-78f05700.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202610",
+        "trackId": "canary-202610",
+        "canary": true,
+        "active": true
+      }
+    }
+  }
+}
