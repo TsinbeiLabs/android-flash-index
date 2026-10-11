@@ -136,9 +136,16 @@ Requirements and limits:
 
 * Chromium only (Chrome, Edge, Opera, Brave) — Firefox and Safari have no WebUSB
 * HTTPS or `localhost`; WebUSB needs a secure context
-* **images must be local.** `dl.google.com` sends no `Access-Control-Allow-Origin`
-  header, so a browser cannot fetch them cross-origin — download first, then
-  pick the file. There is no proxy: these are 4 GB objects.
+* **images must be local.** `dl.google.com` replies with
+  `Access-Control-Allow-Origin: https://flash.android.com` and *only* for that
+  origin — any other `Origin` gets no ACAO header at all, so a browser cannot
+  read the bytes cross-origin. That single allow-list entry is precisely what
+  lets flash.android.com stream images in-page, and precisely what stops anyone
+  else from doing it. There is no proxy worth running: these are 4–15 GB objects.
+  (Worth noting because it is *almost* possible: the inner `image-*.zip` is
+  STORED at a known offset and `init_boot.img` is ~2.6 MiB compressed, so with
+  CORS a browser could extract it from a 4 GB archive with about 3 MiB of range
+  reads. Only the same-origin rule stands in the way.)
 * the bootloader must already be unlocked; this tool will not unlock it for you
 
 Protocol work is [kdrag0n/fastboot.js](https://github.com/kdrag0n/fastboot.js)

@@ -32,9 +32,10 @@
     Nothing is sent until you confirm each action, and <code>-w</code> /
     <code>fastboot -w update</code> style wiping is off unless you explicitly
     turn it on. You need Chromium (Chrome, Edge, Opera, Brave) — Firefox and
-    Safari have no WebUSB. Images must already be on this computer: Google's
-    <code>dl.google.com</code> sends no CORS header, so a browser cannot fetch
-    them cross-origin.
+    Safari have no WebUSB. Images must already be on this computer:
+    <code>dl.google.com</code> only sends <code>Access-Control-Allow-Origin</code>
+    for <code>flash.android.com</code>, so no other site can read them
+    cross-origin.
   </div>
 
   <!-- ---------------- extract ---------------- -->
