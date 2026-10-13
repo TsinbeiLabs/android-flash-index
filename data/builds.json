@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-11 10:57 UTC",
+  "generated": "2026-10-13 13:49 UTC",
   "source": "https://flash.android.com/",
   "api": "https://flashstation-pa.clients6.google.com/v1/builds",
   "counts": {
-    "builds": 4094,
+    "builds": 4096,
     "products": 83,
     "active": 131
   },
@@ -279,6 +279,8 @@
     "Android 17 QPR2 Beta 6.1 ARM64 GSI",
     "Android 17 QPR2 Beta 6.1 ARM64 GSI + GMS",
     "Android 17 QPR2 Beta 7",
+    "Android 17 QPR2 Beta 7 ARM64 GSI",
+    "Android 17 QPR2 Beta 7 ARM64 GSI + GMS",
     "Android 17 QPR3 Beta 1",
     "Android 17 QPR3 Beta 1 ARM64 GSI",
     "Android 17 QPR3 Beta 1 ARM64 GSI + GMS",
@@ -1810,6 +1812,18 @@
       "active": false,
       "httpStatus": 200,
       "sizeBytes": 3177323421
+    },
+    {
+      "product": "aosp_arm64",
+      "buildId": "16521119",
+      "releaseName": "CP41.260831.016",
+      "target": "aosp_arm64-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/gsi/aosp_arm64-exp-CP41.260831.016-16521119-54c40a66.zip",
+      "track": "Android 17 QPR2 Beta 7",
+      "trackVersion": "ARM64 GSI",
+      "trackId": "cinnamonbun-qpr2-beta7-gsi",
+      "canary": false,
+      "active": false
     },
     {
       "product": "aosp_arm64",
@@ -18206,6 +18220,18 @@
       "active": false,
       "httpStatus": 200,
       "sizeBytes": 15510913759
+    },
+    {
+      "product": "gsi_gms_arm64",
+      "buildId": "16521119",
+      "releaseName": "CP41.260831.016",
+      "target": "gsi_gms_arm64-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/gsi/gsi_gms_arm64-exp-CP41.260831.016-16521119-f818e37c.zip",
+      "track": "Android 17 QPR2 Beta 7",
+      "trackVersion": "ARM64 GSI + GMS",
+      "trackId": "cinnamonbun-qpr2-beta7-gsi-gms",
+      "canary": false,
+      "active": false
     },
     {
       "product": "gsi_gms_arm64",
