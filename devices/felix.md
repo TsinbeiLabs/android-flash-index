@@ -2,11 +2,12 @@
 
 Codenames: `felix`
 
-171 build(s). Newest first.
+172 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `felix_beta` | 3.74 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp41.260831.016-factory-d1373b3f.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `felix_beta` | 3.74 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp41.260831.019-factory-45b77f52.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `felix_beta` | 3.74 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp41.260831.016-factory-d1373b3f.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `felix_beta` | 3.72 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.260918.007-factory-c20fa867.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `felix_beta` | 3.76 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.260918.006-factory-fdcd4857.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `felix_beta` | 3.75 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-cp41.260831.007.a3-factory-4cf417ea.zip) |

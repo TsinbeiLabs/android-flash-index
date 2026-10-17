@@ -2,11 +2,12 @@
 
 Codenames: `grizzly`
 
-12 build(s). Newest first.
+13 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `grizzly_beta` | 14.40 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.016-factory-cad23c5e.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `grizzly_beta` | 14.40 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.019-factory-1fc920fc.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `grizzly_beta` | 14.40 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.016-factory-cad23c5e.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `grizzly_beta` | 7.73 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.260918.007-factory-d4f217d1.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `grizzly_beta` | 14.42 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-cp41.260831.011-factory-6dee5512.zip) |
 | 16443917 | `DP11.260918.005` | Android 17 QPR3 Beta 1 |  | **yes** | `grizzly_beta` | 14.43 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.260918.005-factory-09c56567.zip) |

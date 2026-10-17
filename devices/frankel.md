@@ -2,11 +2,12 @@
 
 Codenames: `frankel`
 
-82 build(s). Newest first.
+83 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `frankel_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp41.260831.016-factory-70575213.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `frankel_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp41.260831.019-factory-170a17e5.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `frankel_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp41.260831.016-factory-70575213.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `frankel_beta` | 4.25 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.260918.007-factory-de5cf752.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `frankel_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-dp11.260918.006-factory-8a66b1c9.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `frankel_beta` | 10.68 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-cp41.260831.007.a3-factory-54e153ef.zip) |

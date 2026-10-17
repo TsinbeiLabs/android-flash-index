@@ -2,11 +2,12 @@
 
 Codenames: `rango`
 
-75 build(s). Newest first.
+76 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `rango_beta` | 10.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-cp41.260831.016-factory-162078dc.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `rango_beta` | 10.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-cp41.260831.019-factory-9ac6bd09.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `rango_beta` | 10.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-cp41.260831.016-factory-162078dc.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `rango_beta` | 4.20 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260918.007-factory-747006d7.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `rango_beta` | 10.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-dp11.260918.006-factory-64b20d14.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `rango_beta` | 10.62 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-cp41.260831.007.a3-factory-915a2d43.zip) |

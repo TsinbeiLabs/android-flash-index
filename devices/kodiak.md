@@ -2,11 +2,12 @@
 
 Codenames: `kodiak`
 
-12 build(s). Newest first.
+13 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `kodiak_beta` | 14.41 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.016-factory-b503ab0c.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `kodiak_beta` | 14.41 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.019-factory-c4786468.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `kodiak_beta` | 14.41 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.016-factory-b503ab0c.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `kodiak_beta` | 7.74 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `kodiak_beta` | 14.42 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.011-factory-01a216fb.zip) |
 | 16443917 | `DP11.260918.005` | Android 17 QPR3 Beta 1 |  | **yes** | `kodiak_beta` | 14.43 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.260918.005-factory-0566cedb.zip) |

@@ -2,11 +2,12 @@
 
 Codenames: `akita`
 
-132 build(s). Newest first.
+133 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
-| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  | **yes** | `akita_beta` | 3.71 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp41.260831.016-factory-80792ca7.zip) |
+| 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `akita_beta` | 3.71 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp41.260831.019-factory-df9d80cf.zip) |
+| 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `akita_beta` | 3.71 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp41.260831.016-factory-80792ca7.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `akita_beta` | 3.66 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.260918.007-factory-30937b4b.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `akita_beta` | 3.71 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-dp11.260918.006-factory-219fdba9.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `akita_beta` | 3.72 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-cp41.260831.007.a3-factory-f7b20013.zip) |
