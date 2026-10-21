@@ -2,14 +2,15 @@
 
 Codenames: `lynx`
 
-173 build(s). Newest first.
+174 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `lynx_beta` | 3.64 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.019-factory-e2754cb0.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `lynx_beta` | 3.67 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261002.005-factory-ee34959e.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `lynx_beta` | 3.64 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.016-factory-e645353a.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `lynx_beta` | 3.62 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.260918.007-factory-12d95198.zip) |
-| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `lynx_beta` | 3.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.260918.006-factory-fa75bb5c.zip) |
+| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `lynx_beta` | 3.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.260918.006-factory-fa75bb5c.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `lynx_beta` | 3.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.007.a3-factory-b2bec6e1.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `lynx_beta` | 3.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260831.007-factory-7e1bbe42.zip) |
 | 16319837 | `CP41.260828.005.A6` | Android 17 QPR2 Beta 5 |  |  | `lynx_beta` | 3.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-cp41.260828.005.a6-factory-16909c00.zip) |

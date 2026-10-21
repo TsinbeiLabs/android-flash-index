@@ -1,9 +1,9 @@
 {
-  "generated": "2026-10-17 10:20 UTC",
+  "generated": "2026-10-21 11:24 UTC",
   "source": "https://flash.android.com/",
   "api": "https://flashstation-pa.clients6.google.com/v1/builds",
   "counts": {
-    "builds": 4121,
+    "builds": 4146,
     "products": 83,
     "active": 131
   },
@@ -287,6 +287,9 @@
     "Android 17 QPR3 Beta 1",
     "Android 17 QPR3 Beta 1 ARM64 GSI",
     "Android 17 QPR3 Beta 1 ARM64 GSI + GMS",
+    "Android 17 QPR3 Beta 2",
+    "Android 17 QPR3 Beta 2 ARM64 GSI",
+    "Android 17 QPR3 Beta 2 ARM64 GSI + GMS",
     "Android Canary Canary 202506",
     "Android Canary Canary 202507",
     "Android Canary Canary 202508",
@@ -698,6 +701,20 @@
     },
     {
       "product": "akita_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "akita_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/akita_beta-dp11.261002.005-factory-5b1156e4.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3994662595
+    },
+    {
+      "product": "akita_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "akita_beta-user",
@@ -734,7 +751,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3985916054
     },
@@ -1839,6 +1856,18 @@
       "track": "Android 17 QPR2 Beta 7.1",
       "trackVersion": "ARM64 GSI",
       "trackId": "cinnamonbun-qpr2-beta7.1-gsi",
+      "canary": false,
+      "active": false
+    },
+    {
+      "product": "aosp_arm64",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "aosp_arm64-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/gsi/aosp_arm64-exp-DP11.261002.005-16594701-a359a50b.zip",
+      "track": "Android 17 QPR3 Beta 2",
+      "trackVersion": "ARM64 GSI",
+      "trackId": "cinnamonbun-qpr3-beta2-gsi",
       "canary": false,
       "active": false
     },
@@ -4705,6 +4734,20 @@
     },
     {
       "product": "blazer_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "blazer_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.261002.005-factory-9ac046a4.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 11447024427
+    },
+    {
+      "product": "blazer_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "blazer_beta-user",
@@ -4741,7 +4784,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 11427344052
     },
@@ -5461,6 +5504,20 @@
     },
     {
       "product": "bluejay_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "bluejay_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.261002.005-factory-0f666f71.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3807548608
+    },
+    {
+      "product": "bluejay_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "bluejay_beta-user",
@@ -5497,7 +5554,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3792286913
     },
@@ -8641,6 +8698,20 @@
     },
     {
       "product": "caiman_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "caiman_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/caiman_beta-dp11.261002.005-factory-5bdd2bd3.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4331538558
+    },
+    {
+      "product": "caiman_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "caiman_beta-user",
@@ -8677,7 +8748,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4322380609
     },
@@ -10405,6 +10476,20 @@
     },
     {
       "product": "cheetah_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "cheetah_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cheetah_beta-dp11.261002.005-factory-a0f1077c.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3975990347
+    },
+    {
+      "product": "cheetah_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "cheetah_beta-user",
@@ -10441,7 +10526,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3960234712
     },
@@ -12386,6 +12471,20 @@
     },
     {
       "product": "comet_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "comet_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/comet_beta-dp11.261002.005-factory-bb28008e.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4256729771
+    },
+    {
+      "product": "comet_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "comet_beta-user",
@@ -12422,7 +12521,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4247610885
     },
@@ -14472,6 +14571,20 @@
     },
     {
       "product": "cubs_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "cubs_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261002.005-factory-36850da9.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 15567865431
+    },
+    {
+      "product": "cubs_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "cubs_beta-user",
@@ -14522,7 +14635,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 15527257457
     },
@@ -15207,6 +15320,20 @@
     },
     {
       "product": "felix_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "felix_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/felix_beta-dp11.261002.005-factory-bb6a4627.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4049126938
+    },
+    {
+      "product": "felix_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "felix_beta-user",
@@ -15243,7 +15370,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4033455765
     },
@@ -17594,6 +17721,20 @@
     },
     {
       "product": "frankel_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "frankel_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/frankel_beta-dp11.261002.005-factory-609b7d68.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 11460778785
+    },
+    {
+      "product": "frankel_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "frankel_beta-user",
@@ -17630,7 +17771,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 11441150922
     },
@@ -18294,6 +18435,20 @@
     },
     {
       "product": "grizzly_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "grizzly_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/grizzly_beta-dp11.261002.005-factory-2c96dd03.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 15528578406
+    },
+    {
+      "product": "grizzly_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "grizzly_beta-user",
@@ -18344,7 +18499,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 15488797941
     },
@@ -18385,6 +18540,18 @@
       "track": "Android 17 QPR2 Beta 7.1",
       "trackVersion": "ARM64 GSI + GMS",
       "trackId": "cinnamonbun-qpr2-beta7.1-gsi-gms",
+      "canary": false,
+      "active": false
+    },
+    {
+      "product": "gsi_gms_arm64",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "gsi_gms_arm64-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/gsi/gsi_gms_arm64-exp-DP11.261002.005-16594701-0c7c9c64.zip",
+      "track": "Android 17 QPR3 Beta 2",
+      "trackVersion": "ARM64 GSI + GMS",
+      "trackId": "cinnamonbun-qpr3-beta2-gsi-gms",
       "canary": false,
       "active": false
     },
@@ -19823,6 +19990,20 @@
     },
     {
       "product": "husky_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "husky_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261002.005-factory-fd463781.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4047347580
+    },
+    {
+      "product": "husky_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "husky_beta-user",
@@ -19859,7 +20040,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4039575820
     },
@@ -21263,6 +21444,20 @@
     },
     {
       "product": "kodiak_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "kodiak_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261002.005-factory-d1635421.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 15530560737
+    },
+    {
+      "product": "kodiak_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "kodiak_beta-user",
@@ -21313,7 +21508,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 15490718903
     },
@@ -21741,6 +21936,20 @@
     },
     {
       "product": "komodo_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "komodo_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/komodo_beta-dp11.261002.005-factory-3edc9a58.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4335903433
+    },
+    {
+      "product": "komodo_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "komodo_beta-user",
@@ -21777,7 +21986,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4326760826
     },
@@ -23239,6 +23448,20 @@
     },
     {
       "product": "lynx_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "lynx_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/lynx_beta-dp11.261002.005-factory-ee34959e.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3943278241
+    },
+    {
+      "product": "lynx_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "lynx_beta-user",
@@ -23275,7 +23498,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3927615375
     },
@@ -25094,6 +25317,20 @@
     },
     {
       "product": "mustang_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "mustang_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261002.005-factory-7b3213ae.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 11450711183
+    },
+    {
+      "product": "mustang_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "mustang_beta-user",
@@ -25130,7 +25367,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 11431028355
     },
@@ -29500,6 +29737,20 @@
     },
     {
       "product": "panther_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "panther_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/panther_beta-dp11.261002.005-factory-2558a50a.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3955871865
+    },
+    {
+      "product": "panther_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "panther_beta-user",
@@ -29536,7 +29787,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3940203178
     },
@@ -31838,6 +32089,20 @@
     },
     {
       "product": "rango_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "rango_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/rango_beta-dp11.261002.005-factory-3fc29b0c.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 11414112386
+    },
+    {
+      "product": "rango_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "rango_beta-user",
@@ -31874,7 +32139,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 11394383588
     },
@@ -37707,6 +37972,20 @@
     },
     {
       "product": "shiba_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "shiba_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/shiba_beta-dp11.261002.005-factory-3c73c893.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4038909660
+    },
+    {
+      "product": "shiba_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "shiba_beta-user",
@@ -37743,7 +38022,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4031152034
     },
@@ -39261,6 +39540,20 @@
     },
     {
       "product": "stallion_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "stallion_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261002.005-factory-f7c98233.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4496012441
+    },
+    {
+      "product": "stallion_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "stallion_beta-user",
@@ -39297,7 +39590,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4486909162
     },
@@ -40341,6 +40634,20 @@
     },
     {
       "product": "tangorpro_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "tangorpro_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.261002.005-factory-2d70b3e5.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 3901482508
+    },
+    {
+      "product": "tangorpro_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "tangorpro_beta-user",
@@ -40377,7 +40684,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 3883282804
     },
@@ -42063,6 +42370,20 @@
     },
     {
       "product": "tegu_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "tegu_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tegu_beta-dp11.261002.005-factory-dc2a13b2.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4198402316
+    },
+    {
+      "product": "tegu_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "tegu_beta-user",
@@ -42099,7 +42420,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4189258427
     },
@@ -43260,6 +43581,20 @@
     },
     {
       "product": "tokay_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "tokay_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.261002.005-factory-c59e00f1.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 4328716545
+    },
+    {
+      "product": "tokay_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "tokay_beta-user",
@@ -43296,7 +43631,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 4319543330
     },
@@ -44744,6 +45079,20 @@
     },
     {
       "product": "yogi_beta",
+      "buildId": "16594701",
+      "releaseName": "DP11.261002.005",
+      "target": "yogi_beta-user",
+      "factoryImageUrl": "https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261002.005-factory-12cc585b.zip",
+      "track": "Android 17 QPR3",
+      "trackVersion": "Beta 2",
+      "trackId": "cinnamonbun-qpr3-beta2",
+      "canary": false,
+      "active": true,
+      "httpStatus": 200,
+      "sizeBytes": 15416163651
+    },
+    {
+      "product": "yogi_beta",
       "buildId": "16521119",
       "releaseName": "CP41.260831.016",
       "target": "yogi_beta-user",
@@ -44794,7 +45143,7 @@
       "trackVersion": "Beta 1",
       "trackId": "cinnamonbun-qpr3-beta1",
       "canary": false,
-      "active": true,
+      "active": false,
       "httpStatus": 200,
       "sizeBytes": 15375530663
     },

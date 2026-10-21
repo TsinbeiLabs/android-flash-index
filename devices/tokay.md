@@ -2,14 +2,15 @@
 
 Codenames: `tokay`
 
-130 build(s). Newest first.
+131 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `tokay_beta` | 4.02 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260831.019-factory-26bc4018.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `tokay_beta` | 4.03 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.261002.005-factory-c59e00f1.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `tokay_beta` | 4.02 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260831.016-factory-9e28f96d.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `tokay_beta` | 3.97 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.260918.007-factory-7a28177f.zip) |
-| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `tokay_beta` | 4.02 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.260918.006-factory-0cbe4ea7.zip) |
+| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `tokay_beta` | 4.02 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-dp11.260918.006-factory-0cbe4ea7.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `tokay_beta` | 4.03 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260831.007.a3-factory-52b3129a.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `tokay_beta` | 4.05 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260831.007-factory-ff41c377.zip) |
 | 16319058 | `CP41.260828.004.A8` | Android 17 QPR2 Beta 5 |  |  | `tokay_beta` | 4.03 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tokay_beta-cp41.260828.004.a8-factory-48e1f13e.zip) |

@@ -2,14 +2,15 @@
 
 Codenames: `blazer`, `blazer_2`, `iris`, `iris_dev`
 
-83 build(s). Newest first.
+84 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `blazer_beta` | 10.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260831.019-factory-80396908.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `blazer_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.261002.005-factory-9ac046a4.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `blazer_beta` | 10.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260831.016-factory-96b40732.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `blazer_beta` | 4.23 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.260918.007-factory-f8da6c77.zip) |
-| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `blazer_beta` | 10.64 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.260918.006-factory-85080195.zip) |
+| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `blazer_beta` | 10.64 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-dp11.260918.006-factory-85080195.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `blazer_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260831.007.a3-factory-f0744156.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `blazer_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260831.007-factory-03477e9a.zip) |
 | 16319058 | `CP41.260828.004.A8` | Android 17 QPR2 Beta 5 |  |  | `blazer_beta` | 10.67 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/blazer_beta-cp41.260828.004.a8-factory-1df97131.zip) |

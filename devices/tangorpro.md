@@ -2,14 +2,15 @@
 
 Codenames: `tangorpro`
 
-147 build(s). Newest first.
+148 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `tangorpro_beta` | 3.60 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260831.019-factory-dce25db4.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `tangorpro_beta` | 3.63 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.261002.005-factory-2d70b3e5.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `tangorpro_beta` | 3.60 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260831.016-factory-461860cd.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `tangorpro_beta` | 3.58 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260918.007-factory-fbfe0cb4.zip) |
-| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  | **yes** | `tangorpro_beta` | 3.62 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.260918.006-factory-8dc23998.zip) |
+| 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `tangorpro_beta` | 3.62 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-dp11.260918.006-factory-8dc23998.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `tangorpro_beta` | 3.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260831.007.a3-factory-699fd686.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `tangorpro_beta` | 3.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260831.007-factory-dc8260ca.zip) |
 | 16319837 | `CP41.260828.005.A6` | Android 17 QPR2 Beta 5 |  |  | `tangorpro_beta` | 3.61 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/tangorpro_beta-cp41.260828.005.a6-factory-6a504fb5.zip) |
