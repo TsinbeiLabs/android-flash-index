@@ -2,12 +2,13 @@
 
 Codenames: `yogi`
 
-14 build(s). Newest first.
+15 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16730940 | `DP11.261016.004` | Android 17 QPR3 Beta 3 |  | **yes** | `yogi_beta` | 14.29 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261016.004-factory-b27f832a.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `yogi_beta` | 14.30 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.019-factory-d1d1450f.zip) |
-| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `yogi_beta` | 14.36 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261002.005-factory-12cc585b.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `yogi_beta` | 14.36 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-dp11.261002.005-factory-12cc585b.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `yogi_beta` | 14.30 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.016-factory-facc761d.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `yogi_beta` | 7.63 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.260918.007-factory-78f05700.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `yogi_beta` | 14.32 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/yogi_beta-cp41.260831.011-factory-ea06dfeb.zip) |

@@ -2,12 +2,13 @@
 
 Codenames: `cubs`
 
-14 build(s). Newest first.
+15 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16730940 | `DP11.261016.004` | Android 17 QPR3 Beta 3 |  | **yes** | `cubs_beta` | 14.43 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261016.004-factory-5dcc3423.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `cubs_beta` | 14.44 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.019-factory-4f3a2e5b.zip) |
-| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `cubs_beta` | 14.50 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261002.005-factory-36850da9.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `cubs_beta` | 14.50 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261002.005-factory-36850da9.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `cubs_beta` | 14.44 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.016-factory-11122495.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `cubs_beta` | 7.77 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `cubs_beta` | 14.46 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.011-factory-a24f6b76.zip) |

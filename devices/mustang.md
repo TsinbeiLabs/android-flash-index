@@ -2,12 +2,13 @@
 
 Codenames: `mustang`, `mustang_2`
 
-84 build(s). Newest first.
+85 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16708287 | `DP11.261016.003` | Android 17 QPR3 Beta 3 |  | **yes** | `mustang_beta` | 11.79 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261016.003-factory-da0d5828.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `mustang_beta` | 10.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-cp41.260831.019-factory-cd8c4c81.zip) |
-| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `mustang_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261002.005-factory-7b3213ae.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `mustang_beta` | 10.66 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.261002.005-factory-7b3213ae.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `mustang_beta` | 10.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-cp41.260831.016-factory-a879d81f.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `mustang_beta` | 4.24 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.260918.007-factory-d94091f0.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `mustang_beta` | 10.65 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/mustang_beta-dp11.260918.006-factory-1cbc5d2b.zip) |

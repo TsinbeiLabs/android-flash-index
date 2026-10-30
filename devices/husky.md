@@ -2,12 +2,13 @@
 
 Codenames: `husky`
 
-164 build(s). Newest first.
+165 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16708287 | `DP11.261016.003` | Android 17 QPR3 Beta 3 |  | **yes** | `husky_beta` | 3.76 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261016.003-factory-296a4cfb.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `husky_beta` | 3.76 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-cp41.260831.019-factory-26ef0c2c.zip) |
-| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  | **yes** | `husky_beta` | 3.77 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261002.005-factory-fd463781.zip) |
+| 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `husky_beta` | 3.77 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.261002.005-factory-fd463781.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `husky_beta` | 3.76 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-cp41.260831.016-factory-1ad56cdc.zip) |
 | 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `husky_beta` | 3.72 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260918.007-factory-00316935.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `husky_beta` | 3.76 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/husky_beta-dp11.260918.006-factory-a2560128.zip) |
