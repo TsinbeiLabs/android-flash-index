@@ -2,15 +2,16 @@
 
 Codenames: `cubs`
 
-15 build(s). Newest first.
+16 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16754936 | `ZP11.261016.008` | Android Canary 202611 | yes | **yes** | `cubs_beta` | 7.76 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.261016.008-factory-901257f0.zip) |
 | 16730940 | `DP11.261016.004` | Android 17 QPR3 Beta 3 |  | **yes** | `cubs_beta` | 14.43 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261016.004-factory-5dcc3423.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `cubs_beta` | 14.44 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.019-factory-4f3a2e5b.zip) |
 | 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `cubs_beta` | 14.50 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.261002.005-factory-36850da9.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `cubs_beta` | 14.44 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.016-factory-11122495.zip) |
-| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `cubs_beta` | 7.77 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip) |
+| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes |  | `cubs_beta` | 7.77 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `cubs_beta` | 14.46 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-cp41.260831.011-factory-a24f6b76.zip) |
 | 16443917 | `DP11.260918.005` | Android 17 QPR3 Beta 1 |  |  | `cubs_beta` | 14.46 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/cubs_beta-dp11.260918.005-factory-e368a0a0.zip) |
 | 16433324 | `CD1A.261005.003.B1` |  |  |  | `cubs` |  | [zip](https://dl.google.com/dl/android/aosp/cubs-cd1a.261005.003.b1-factory-ed501582.zip) |

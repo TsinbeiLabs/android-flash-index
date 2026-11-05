@@ -2,15 +2,16 @@
 
 Codenames: `kodiak`
 
-15 build(s). Newest first.
+16 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16754936 | `ZP11.261016.008` | Android Canary 202611 | yes | **yes** | `kodiak_beta` | 7.73 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.261016.008-factory-21dd31fa.zip) |
 | 16730940 | `DP11.261016.004` | Android 17 QPR3 Beta 3 |  | **yes** | `kodiak_beta` | 14.40 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261016.004-factory-bb824a7c.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `kodiak_beta` | 14.41 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.019-factory-c4786468.zip) |
 | 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `kodiak_beta` | 14.46 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.261002.005-factory-d1635421.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `kodiak_beta` | 14.41 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.016-factory-b503ab0c.zip) |
-| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `kodiak_beta` | 7.74 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip) |
+| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes |  | `kodiak_beta` | 7.74 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip) |
 | 16448103 | `CP41.260831.011` | Android 17 QPR2 Beta 6.1 |  |  | `kodiak_beta` | 14.42 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-cp41.260831.011-factory-01a216fb.zip) |
 | 16443917 | `DP11.260918.005` | Android 17 QPR3 Beta 1 |  |  | `kodiak_beta` | 14.43 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/kodiak_beta-dp11.260918.005-factory-0566cedb.zip) |
 | 16433324 | `CD1A.261005.003.B1` |  |  |  | `kodiak` |  | [zip](https://dl.google.com/dl/android/aosp/kodiak-cd1a.261005.003.b1-factory-64d60b44.zip) |

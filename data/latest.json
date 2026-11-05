@@ -1,7 +1,21 @@
 {
-  "generated": "2026-10-30 12:23 UTC",
+  "generated": "2026-11-05 14:17 UTC",
   "latest": {
     "akita": {
+      "latestCanary": {
+        "product": "akita_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "akita_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.261016.008-factory-4286cfdf.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3948474144
+      },
       "latestBeta": {
         "product": "akita_beta",
         "buildId": "16708287",
@@ -15,23 +29,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3989554258
-      },
-      "latestCanary": {
-        "product": "akita_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "akita_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/akita_beta-zp11.260918.007-factory-30937b4b.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3933143019
       }
     },
     "blazer": {
+      "latestCanary": {
+        "product": "blazer_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "blazer_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.261016.008-factory-5ec477d1.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 5764116966
+      },
       "latestBeta": {
         "product": "blazer_beta",
         "buildId": "16708287",
@@ -45,23 +59,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 12653838914
-      },
-      "latestCanary": {
-        "product": "blazer_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "blazer_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/blazer_beta-zp11.260918.007-factory-f8da6c77.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4544941149
       }
     },
     "bluejay": {
+      "latestCanary": {
+        "product": "bluejay_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "bluejay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.261016.008-factory-047d574c.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3773460980
+      },
       "latestBeta": {
         "product": "bluejay_beta",
         "buildId": "16708287",
@@ -75,23 +89,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3800347516
-      },
-      "latestCanary": {
-        "product": "bluejay_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "bluejay_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260918.007-factory-a6494b9b.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3750410935
       }
     },
     "caiman": {
+      "latestCanary": {
+        "product": "caiman_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "caiman_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/caiman_beta-zp11.261016.008-factory-e5feae4a.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4285364317
+      },
       "latestBeta": {
         "product": "caiman_beta",
         "buildId": "16708287",
@@ -105,23 +119,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4326385093
-      },
-      "latestCanary": {
-        "product": "caiman_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "caiman_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/caiman_beta-zp11.260918.007-factory-b96cfe1f.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4269967732
       }
     },
     "cheetah": {
+      "latestCanary": {
+        "product": "cheetah_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "cheetah_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cheetah_beta-zp11.261016.008-factory-0a9e3035.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3933940032
+      },
       "latestBeta": {
         "product": "cheetah_beta",
         "buildId": "16708287",
@@ -135,23 +149,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3967674629
-      },
-      "latestCanary": {
-        "product": "cheetah_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "cheetah_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cheetah_beta-zp11.260918.007-factory-6dcae64c.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3918859420
       }
     },
     "comet": {
+      "latestCanary": {
+        "product": "comet_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "comet_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/comet_beta-zp11.261016.008-factory-ab594f82.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4312818815
+      },
       "latestBeta": {
         "product": "comet_beta",
         "buildId": "16708287",
@@ -165,23 +179,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4251536876
-      },
-      "latestCanary": {
-        "product": "comet_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "comet_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/comet_beta-zp11.260918.007-factory-8586f319.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4297676806
       }
     },
     "cubs": {
+      "latestCanary": {
+        "product": "cubs_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "cubs_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.261016.008-factory-901257f0.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8333655328
+      },
       "latestBeta": {
         "product": "cubs_beta",
         "buildId": "16730940",
@@ -195,23 +209,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 15497249890
-      },
-      "latestCanary": {
-        "product": "cubs_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "cubs_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/cubs_beta-zp11.260918.007-factory-60e44827.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 8343344722
       }
     },
     "felix": {
+      "latestCanary": {
+        "product": "felix_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "felix_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.261016.008-factory-b76dea96.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4007203187
+      },
       "latestBeta": {
         "product": "felix_beta",
         "buildId": "16708287",
@@ -225,23 +239,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4040776431
-      },
-      "latestCanary": {
-        "product": "felix_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "felix_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/felix_beta-zp11.260918.007-factory-c20fa867.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3991886506
       }
     },
     "frankel": {
+      "latestCanary": {
+        "product": "frankel_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "frankel_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.261016.008-factory-45c8c8f8.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 5776542221
+      },
       "latestBeta": {
         "product": "frankel_beta",
         "buildId": "16708287",
@@ -255,23 +269,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 12666257279
-      },
-      "latestCanary": {
-        "product": "frankel_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "frankel_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/frankel_beta-zp11.260918.007-factory-de5cf752.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4558754652
       }
     },
     "grizzly": {
+      "latestCanary": {
+        "product": "grizzly_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "grizzly_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.261016.008-factory-9c4cf500.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8294363847
+      },
       "latestBeta": {
         "product": "grizzly_beta",
         "buildId": "16730940",
@@ -285,23 +299,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 15457946349
-      },
-      "latestCanary": {
-        "product": "grizzly_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "grizzly_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/grizzly_beta-zp11.260918.007-factory-d4f217d1.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 8304018738
       }
     },
     "husky": {
+      "latestCanary": {
+        "product": "husky_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "husky_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.261016.008-factory-76919a2c.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4006578664
+      },
       "latestBeta": {
         "product": "husky_beta",
         "buildId": "16708287",
@@ -315,23 +329,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4042227142
-      },
-      "latestCanary": {
-        "product": "husky_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "husky_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/husky_beta-zp11.260918.007-factory-00316935.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3994531598
       }
     },
     "kodiak": {
+      "latestCanary": {
+        "product": "kodiak_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "kodiak_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.261016.008-factory-21dd31fa.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8296317663
+      },
       "latestBeta": {
         "product": "kodiak_beta",
         "buildId": "16730940",
@@ -345,23 +359,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 15459924653
-      },
-      "latestCanary": {
-        "product": "kodiak_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "kodiak_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/kodiak_beta-zp11.260918.007-factory-82704ed7.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 8305960170
       }
     },
     "komodo": {
+      "latestCanary": {
+        "product": "komodo_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "komodo_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.261016.008-factory-5b601f5c.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4289707876
+      },
       "latestBeta": {
         "product": "komodo_beta",
         "buildId": "16708287",
@@ -375,23 +389,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4330793544
-      },
-      "latestCanary": {
-        "product": "komodo_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "komodo_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/komodo_beta-zp11.260918.007-factory-4ee71c79.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4274321958
       }
     },
     "lynx": {
+      "latestCanary": {
+        "product": "lynx_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "lynx_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.261016.008-factory-57c1c137.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3901205615
+      },
       "latestBeta": {
         "product": "lynx_beta",
         "buildId": "16708287",
@@ -405,23 +419,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3934855183
-      },
-      "latestCanary": {
-        "product": "lynx_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "lynx_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/lynx_beta-zp11.260918.007-factory-12d95198.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3886074807
       }
     },
     "mustang": {
+      "latestCanary": {
+        "product": "mustang_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "mustang_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.261016.008-factory-bd0f5f89.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 5767818056
+      },
       "latestBeta": {
         "product": "mustang_beta",
         "buildId": "16708287",
@@ -435,20 +449,6 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 12657511836
-      },
-      "latestCanary": {
-        "product": "mustang_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "mustang_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/mustang_beta-zp11.260918.007-factory-d94091f0.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4548618977
       }
     },
     "oriole": {
@@ -468,6 +468,20 @@
       }
     },
     "panther": {
+      "latestCanary": {
+        "product": "panther_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "panther_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/panther_beta-zp11.261016.008-factory-b3315e03.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3913876107
+      },
       "latestBeta": {
         "product": "panther_beta",
         "buildId": "16708287",
@@ -481,23 +495,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3947524899
-      },
-      "latestCanary": {
-        "product": "panther_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "panther_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/panther_beta-zp11.260918.007-factory-592e7f04.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3898780001
       }
     },
     "rango": {
+      "latestCanary": {
+        "product": "rango_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "rango_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.261016.008-factory-b64fe9e8.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 5727682451
+      },
       "latestBeta": {
         "product": "rango_beta",
         "buildId": "16708287",
@@ -511,20 +525,6 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 12614929969
-      },
-      "latestCanary": {
-        "product": "rango_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "rango_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/rango_beta-zp11.260918.007-factory-747006d7.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4513035789
       }
     },
     "raven": {
@@ -544,6 +544,20 @@
       }
     },
     "shiba": {
+      "latestCanary": {
+        "product": "shiba_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "shiba_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/shiba_beta-zp11.261016.008-factory-5ba95cfc.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3998195776
+      },
       "latestBeta": {
         "product": "shiba_beta",
         "buildId": "16708287",
@@ -557,23 +571,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4033809658
-      },
-      "latestCanary": {
-        "product": "shiba_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "shiba_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/shiba_beta-zp11.260918.007-factory-4234c29f.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3986144450
       }
     },
     "stallion": {
+      "latestCanary": {
+        "product": "stallion_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "stallion_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.261016.008-factory-ac3f7bd9.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4434077091
+      },
       "latestBeta": {
         "product": "stallion_beta",
         "buildId": "16708287",
@@ -587,23 +601,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4476604493
-      },
-      "latestCanary": {
-        "product": "stallion_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "stallion_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260918.007-factory-8fa571db.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4433967413
       }
     },
     "tangorpro": {
+      "latestCanary": {
+        "product": "tangorpro_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "tangorpro_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.261016.008-factory-ca548b89.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 3860828337
+      },
       "latestBeta": {
         "product": "tangorpro_beta",
         "buildId": "16708287",
@@ -617,23 +631,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 3893831617
-      },
-      "latestCanary": {
-        "product": "tangorpro_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "tangorpro_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tangorpro_beta-zp11.260918.007-factory-fbfe0cb4.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 3841970534
       }
     },
     "tegu": {
+      "latestCanary": {
+        "product": "tegu_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "tegu_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.261016.008-factory-28d56d15.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4151802248
+      },
       "latestBeta": {
         "product": "tegu_beta",
         "buildId": "16708287",
@@ -647,23 +661,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4193222620
-      },
-      "latestCanary": {
-        "product": "tegu_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "tegu_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tegu_beta-zp11.260918.007-factory-f5955275.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4136732756
       }
     },
     "tokay": {
+      "latestCanary": {
+        "product": "tokay_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "tokay_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.261016.008-factory-ac6127c1.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 4282556243
+      },
       "latestBeta": {
         "product": "tokay_beta",
         "buildId": "16708287",
@@ -677,23 +691,23 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 4323574009
-      },
-      "latestCanary": {
-        "product": "tokay_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "tokay_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/tokay_beta-zp11.260918.007-factory-7a28177f.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 4267094233
       }
     },
     "yogi": {
+      "latestCanary": {
+        "product": "yogi_beta",
+        "buildId": "16754936",
+        "releaseName": "ZP11.261016.008",
+        "target": "yogi_beta-user",
+        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.261016.008-factory-8b97b206.zip",
+        "track": "Android Canary",
+        "trackVersion": "Canary 202611",
+        "trackId": "canary-202611",
+        "canary": true,
+        "active": true,
+        "httpStatus": 200,
+        "sizeBytes": 8182046857
+      },
       "latestBeta": {
         "product": "yogi_beta",
         "buildId": "16730940",
@@ -707,20 +721,6 @@
         "active": true,
         "httpStatus": 200,
         "sizeBytes": 15345613861
-      },
-      "latestCanary": {
-        "product": "yogi_beta",
-        "buildId": "16484274",
-        "releaseName": "ZP11.260918.007",
-        "target": "yogi_beta-user",
-        "factoryImageUrl": "https://dl.google.com/developers/android/CANARY/images/factory/yogi_beta-zp11.260918.007-factory-78f05700.zip",
-        "track": "Android Canary",
-        "trackVersion": "Canary 202610",
-        "trackId": "canary-202610",
-        "canary": true,
-        "active": true,
-        "httpStatus": 200,
-        "sizeBytes": 8191593950
       }
     }
   }

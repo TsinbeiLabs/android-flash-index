@@ -2,15 +2,16 @@
 
 Codenames: `stallion`
 
-45 build(s). Newest first.
+46 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16754936 | `ZP11.261016.008` | Android Canary 202611 | yes | **yes** | `stallion_beta` | 4.13 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.261016.008-factory-ac3f7bd9.zip) |
 | 16708287 | `DP11.261016.003` | Android 17 QPR3 Beta 3 |  | **yes** | `stallion_beta` | 4.17 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261016.003-factory-51dccede.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `stallion_beta` | 4.18 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260831.019-factory-95d3c598.zip) |
 | 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `stallion_beta` | 4.19 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.261002.005-factory-f7c98233.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `stallion_beta` | 4.18 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260831.016-factory-aea4e868.zip) |
-| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `stallion_beta` | 4.13 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260918.007-factory-8fa571db.zip) |
+| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes |  | `stallion_beta` | 4.13 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/stallion_beta-zp11.260918.007-factory-8fa571db.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `stallion_beta` | 4.18 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-dp11.260918.006-factory-fb78cc28.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `stallion_beta` | 4.18 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260831.007.a3-factory-dbcbbfca.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `stallion_beta` | 4.18 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/stallion_beta-cp41.260831.007-factory-9e57e61f.zip) |

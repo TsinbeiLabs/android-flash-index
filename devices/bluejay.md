@@ -2,15 +2,16 @@
 
 Codenames: `bluejay`
 
-70 build(s). Newest first.
+71 build(s). Newest first.
 
 | Build | Release | Track | Canary | Active | Product | Size | Factory image |
 |---|---|---|---|---|---|---|---|
+| 16754936 | `ZP11.261016.008` | Android Canary 202611 | yes | **yes** | `bluejay_beta` | 3.51 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.261016.008-factory-047d574c.zip) |
 | 16708287 | `DP11.261016.003` | Android 17 QPR3 Beta 3 |  | **yes** | `bluejay_beta` | 3.54 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.261016.003-factory-2c56b47a.zip) |
 | 16596456 | `CP41.260831.019` | Android 17 QPR2 Beta 7.1 |  | **yes** | `bluejay_beta` | 3.53 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260831.019-factory-0e1e15c2.zip) |
 | 16594701 | `DP11.261002.005` | Android 17 QPR3 Beta 2 |  |  | `bluejay_beta` | 3.55 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.261002.005-factory-0f666f71.zip) |
 | 16521119 | `CP41.260831.016` | Android 17 QPR2 Beta 7 |  |  | `bluejay_beta` | 3.53 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260831.016-factory-3b079cfd.zip) |
-| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes | **yes** | `bluejay_beta` | 3.49 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260918.007-factory-a6494b9b.zip) |
+| 16484274 | `ZP11.260918.007` | Android Canary 202610 | yes |  | `bluejay_beta` | 3.49 GB | [zip](https://dl.google.com/developers/android/CANARY/images/factory/bluejay_beta-zp11.260918.007-factory-a6494b9b.zip) |
 | 16451184 | `DP11.260918.006` | Android 17 QPR3 Beta 1 |  |  | `bluejay_beta` | 3.53 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-dp11.260918.006-factory-0bff776a.zip) |
 | 16450490 | `CP41.260831.007.A3` | Android 17 QPR2 Beta 6.1 |  |  | `bluejay_beta` | 3.53 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260831.007.a3-factory-fc96b9f5.zip) |
 | 16416850 | `CP41.260831.007` | Android 17 QPR2 Beta 6 |  |  | `bluejay_beta` | 3.53 GB | [zip](https://dl.google.com/developers/android/cinnamonbun/images/factory/bluejay_beta-cp41.260831.007-factory-9010a8fa.zip) |
