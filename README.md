@@ -68,7 +68,7 @@ deployment after the scraper commits updated data.
 * device sidebar grouped into Phones / Foldables / Tablets / Wear OS / GSI, with counts
 * "Latest Canary" and "Latest Beta" cards for the current selection
 * full-text search across release name, build id, product, target and track
-* filters: active only · canary only · beta only · per-product · four sort orders
+* filters: active only · all / canary / beta tracks · per-product · four sort orders
 * one-click **Download** (direct `dl.google.com` link) and **Copy link**
 * shows image size, and flags links that did not answer `200` on the last probe
 * deep-linkable — `#caiman?active=1&q=ZP11` restores the whole view

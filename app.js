@@ -1,8 +1,7 @@
 /* Android Image Index — static browser over data/builds.json.
  *
- * No framework, no build step. Everything is derived from the two JSON files
- * that scrape.py emits, so the site never needs redeploying when Google ships a
- * new build; the daily Actions run just replaces the data.
+ * No framework, no build step. Everything is derived from the JSON files
+ * that scrape.py emits and the daily Actions run publishes to Pages.
  */
 "use strict";
 
@@ -15,7 +14,7 @@ const state = {
   all: null,          // pseudo-device covering every build
   selected: null,     // slug, or null for the "all builds" view
   shown: PAGE_SIZE,
-  filters: { q: "", active: false, canary: false, beta: false, product: "", sort: "new" },
+  filters: { q: "", active: false, track: "", product: "", sort: "new" },
 };
 
 /* ------------------------------------------------------------------ utils */
@@ -88,6 +87,11 @@ function cmpSortKey(a, b) {
     if (a[i] > b[i]) return 1;
   }
   return 0;
+}
+
+function deviceLabel(d) {
+  const suffix = ` (${d.slug})`;
+  return d.name.endsWith(suffix) ? d.name.slice(0, -suffix.length) : d.name;
 }
 
 function indexDevices(devicesRaw, builds) {
@@ -164,27 +168,27 @@ function renderSidebar() {
 
   const out = [];
 
-  // "All devices" lives at the top of the list, styled exactly like a device
-  // entry, so there is always a one-click way back out of a filtered view.
+  // "All devices" lives at the top of the list for a one-click way back.
   // Empty data-slug means "no device selected".
   out.push(
     `<button class="dev all" type="button" data-slug=""`
     + ` aria-current="${state.selected === null}"`
     + ` title="Every build, every device">`
-    + `<span>All devices</span>`
-    + `<span class="n">${state.builds.length.toLocaleString()}</span>`
-    + `<span class="code">all</span></button>`);
+    + `<span class="dev-label">All devices</span>`
+    + `<span class="n">${state.builds.length.toLocaleString()}</span></button>`);
 
   for (const g of names) {
     out.push(`<div class="devgroup">${esc(g)}</div>`);
     for (const d of groups.get(g)) {
       const cur = state.selected === d.slug;
+      const label = deviceLabel(d);
       out.push(
         `<button class="dev" type="button" data-slug="${esc(d.slug)}"`
-        + ` aria-current="${cur}" title="${esc(d.codenames.join(", "))}">`
-        + `<span>${esc(d.name)}</span>`
-        + `<span class="n">${d.builds.length}</span>`
-        + `<span class="code">${esc(d.slug)}</span></button>`);
+        + ` aria-current="${cur}" aria-label="${esc(label)} (${esc(d.slug)}), ${d.builds.length} builds"`
+        + ` title="${esc(d.codenames.join(", "))}">`
+        + `<span class="dev-label">${esc(label)}</span>`
+        + `<span class="code">${esc(d.slug)}</span>`
+        + `<span class="n">${d.builds.length.toLocaleString()}</span></button>`);
     }
   }
   const noMatch = names.length === 0;
@@ -237,8 +241,7 @@ function filtered() {
 
   if (f.product) list = list.filter((b) => b.product === f.product);
   if (f.active) list = list.filter((b) => b.active);
-  if (f.canary) list = list.filter((b) => b.canary);
-  if (f.beta) list = list.filter((b) => !b.canary);
+  if (f.track) list = list.filter((b) => b.canary === (f.track === "canary"));
   if (f.q) {
     const q = f.q.toLowerCase();
     list = list.filter((b) => [
@@ -331,7 +334,7 @@ function renderHead() {
     document.title = "Android Image Index";
     return;
   }
-  $("devname").textContent = dev.name;
+  $("devname").textContent = deviceLabel(dev);
   $("devmeta").innerHTML = `codename${dev.codenames.length > 1 ? "s" : ""}: `
     + dev.codenames.map((c) => `<code>${esc(c)}</code>`).join(" · ")
     + ` &nbsp;—&nbsp; ${dev.builds.length} builds across ${dev.products.length} product(s)`;
@@ -361,8 +364,7 @@ function writeHash() {
   const f = state.filters;
   if (f.q) p.set("q", f.q);
   if (f.active) p.set("active", "1");
-  if (f.canary) p.set("canary", "1");
-  if (f.beta) p.set("beta", "1");
+  if (f.track) p.set(f.track, "1");
   if (f.product) p.set("product", f.product);
   if (f.sort !== "new") p.set("sort", f.sort);
   const qs = p.toString();
@@ -379,15 +381,13 @@ function readHash() {
   state.filters = {
     q: p.get("q") || "",
     active: p.get("active") === "1",
-    canary: p.get("canary") === "1",
-    beta: p.get("beta") === "1",
+    track: p.get("canary") === "1" ? "canary" : p.get("beta") === "1" ? "beta" : "",
     product: p.get("product") || "",
     sort: p.get("sort") || "new",
   };
   $("q").value = state.filters.q;
   $("factive").checked = state.filters.active;
-  $("fcanary").checked = state.filters.canary;
-  $("fbeta").checked = state.filters.beta;
+  $("ftrack").value = state.filters.track;
   $("fsort").value = state.filters.sort;
 }
 
@@ -483,15 +483,19 @@ async function main() {
       renderTable();
     }, 130);
   });
-  for (const [id, key] of [["factive", "active"], ["fcanary", "canary"], ["fbeta", "beta"]]) {
-    $(id).addEventListener("change", (e) => {
-      state.filters[key] = e.target.checked;
-      state.shown = PAGE_SIZE;
-      writeHash();
-      renderCards();
-      renderTable();
-    });
-  }
+  $("factive").addEventListener("change", (e) => {
+    state.filters.active = e.target.checked;
+    state.shown = PAGE_SIZE;
+    writeHash();
+    renderCards();
+    renderTable();
+  });
+  $("ftrack").addEventListener("change", (e) => {
+    state.filters.track = e.target.value;
+    state.shown = PAGE_SIZE;
+    writeHash();
+    renderTable();
+  });
   $("fproduct").addEventListener("change", (e) => {
     state.filters.product = e.target.value;
     state.shown = PAGE_SIZE;

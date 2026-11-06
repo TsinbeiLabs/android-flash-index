@@ -49,8 +49,11 @@
       <input id="q" type="search" placeholder="Search release, build id, track…  ( / )"
              autocomplete="off" spellcheck="false" aria-label="Search builds">
       <label class="chk"><input id="factive" type="checkbox"> active only</label>
-      <label class="chk"><input id="fcanary" type="checkbox"> canary only</label>
-      <label class="chk"><input id="fbeta" type="checkbox"> beta only</label>
+      <select id="ftrack" aria-label="Release track">
+        <option value="">all tracks</option>
+        <option value="canary">canary only</option>
+        <option value="beta">beta only</option>
+      </select>
       <select id="fproduct" aria-label="Product"></select>
       <select id="fsort" aria-label="Sort">
         <option value="new">newest first</option>

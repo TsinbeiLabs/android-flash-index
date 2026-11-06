@@ -101,30 +101,37 @@ a { color: var(--accent); }
   border-radius: var(--radius); overflow: hidden;
 }
 .side-head { padding: 10px; border-bottom: 1px solid var(--line); }
+.side-head input { width: 100%; min-width: 0; }
 .devlist { overflow-y: auto; padding: 6px; flex: 1; }
 
-/* the "All devices" entry, visually identical to a device row */
+/* the "All devices" entry keeps the same alignment as device rows */
 .dev.all { margin-bottom: 4px; font-weight: 600; }
-.dev.all .code { font-style: normal; opacity: .75; }
-
 
 .devgroup {
   padding: 10px 8px 4px; font-size: 10.5px; font-weight: 650;
   text-transform: uppercase; letter-spacing: .07em; color: var(--fg-muted);
 }
 .dev {
-  display: flex; align-items: baseline; gap: 8px; width: 100%;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 8px; align-items: center; width: 100%;
   padding: 6px 9px; border: 0; border-radius: 7px;
   background: none; color: var(--fg); font: inherit; font-size: 13px;
   text-align: left; cursor: pointer;
 }
 .dev:hover { background: var(--bg-sunken); }
+.dev:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .dev[aria-current="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.dev .dev-label { grid-column: 1; min-width: 0; line-height: 1.35; }
 .dev .code {
-  margin-left: auto; font: 11px var(--mono); color: var(--fg-muted); flex: none;
+  grid-column: 1; grid-row: 2;
+  font: 11px/1.4 var(--mono); color: var(--fg-muted);
 }
 .dev[aria-current="true"] .code { color: var(--accent); }
-.dev .n { font-size: 10.5px; color: var(--fg-muted); flex: none; }
+.dev .n {
+  grid-column: 2; grid-row: 1 / span 2;
+  font-size: 11px; color: var(--fg-muted); font-variant-numeric: tabular-nums;
+}
+.dev.all .n { grid-row: 1; }
 
 /* ---------- main ---------- */
 .main { min-width: 0; }
@@ -224,6 +231,7 @@ td.act .btn { margin-left: 6px; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
+  .top { position: static; }
   .layout { grid-template-columns: minmax(0, 1fr); padding: 14px 12px 40px; }
   .side { position: static; max-height: 300px; }
   .controls { position: static; }
@@ -231,6 +239,11 @@ td.act .btn { margin-left: 6px; }
   .top-in { padding: 10px 12px; }
   .tag { display: none; }
   thead th:nth-child(4), tbody td:nth-child(4) { display: none; }
+}
+
+@media (max-width: 600px) {
+  .top-actions { width: 100%; margin-left: 0; flex-wrap: wrap; gap: 6px; }
+  .stats { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
