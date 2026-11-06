@@ -62,7 +62,8 @@ reads both, so it keeps working as new devices appear.
 ## The website
 
 A static single-page app served by GitHub Pages. No framework, no build step —
-it fetches `data/*.json` at runtime, so a data refresh needs no redeploy.
+it fetches `data/*.json` at runtime. The daily index refresh triggers a Pages
+deployment after the scraper commits updated data.
 
 * device sidebar grouped into Phones / Foldables / Tablets / Wear OS / GSI, with counts
 * "Latest Canary" and "Latest Beta" cards for the current selection
